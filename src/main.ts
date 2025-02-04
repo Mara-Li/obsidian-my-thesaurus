@@ -1,15 +1,16 @@
+import i18next from "i18next";
 import { Plugin } from "obsidian";
 import { resources, translationLanguage } from "./i18n";
-import i18next from "i18next";
 
+import { DEFAULT_SETTINGS, type MyThesaurusSettings } from "./interfaces";
 import { MyThesaurusSettingTab } from "./settings";
-import { MyThesaurusSettings, DEFAULT_SETTINGS } from "./interfaces";
+import "uniformize";
 
 export default class MyThesaurus extends Plugin {
 	settings!: MyThesaurusSettings;
 
 	async onload() {
-		console.log(`[${this.manifest.name}] Loaded`)
+		console.log(`[${this.manifest.name}] Loaded`);
 		await this.loadSettings();
 		//load i18next
 		await i18next.init({
@@ -20,7 +21,6 @@ export default class MyThesaurus extends Plugin {
 			returnEmptyString: false,
 		});
 		this.addSettingTab(new MyThesaurusSettingTab(this.app, this));
-		
 	}
 
 	onunload() {
@@ -35,5 +35,3 @@ export default class MyThesaurus extends Plugin {
 		await this.saveData(this.settings);
 	}
 }
-
-
