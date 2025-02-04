@@ -3,7 +3,7 @@
 	"name": "My Thesaurus",
 	"version": "0.0.0",
 	"minAppVersion": "1.5.12",
-	"description": "Add automagically tags based on a simple csv file.",
+	"description": "Automagically adds tags based on a simple csv file.",
 	"author": "mara-li",
 	"authorUrl": "https//github.com/mara-li",
 	"isDesktopOnly": false

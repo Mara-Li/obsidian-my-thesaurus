@@ -1,6 +1,6 @@
 # My Thesaurus
 
-Add automagically tags based on a thesaurus CSV.
+Automagically adds tags based on a thesaurus CSV.
 
 ## ⚙️ Usage
 
