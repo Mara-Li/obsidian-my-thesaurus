@@ -1,48 +1,43 @@
 {
-  "name": "my-thesaurus",
-  "version": "0.0.0",
-  "description": "Add automagically tags based on a thesaurus CSV.",
-  "main": "main.js",
-  "private": true,
-  "scripts": {
-    "prebuild": "tsc --noEmit --skipLibCheck",
-    "build": "node esbuild.config.mjs --production",
-    "dev:prod": "node esbuild.config.mjs --vault",
-    "dev": "node esbuild.config.mjs",
-    "export": "node esbuild.config.mjs --production --vault",
-    "bump": "dotenv -- node commit-and-tag-version.mjs",
-    "postbump": "dotenv -- if-env SKIP_POST_BUMP=true && echo skip bump || git push --follow-tags origin master",
-    "predeploy": "bun run bump",
-    "deploy": "pnpm run export",
-    "lint": "pnpm biome format --write src/"
-  },
-  "engines": {
-    "node": "^22.2.0"
-  },
-  "keywords": [],
-  "author": "Mara-Li",
-  "license": "MIT",
-  "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@types/node": "^22.13.1",
-    "builtin-modules": "4.0.0",
-    "i18next": "^24.2.2",
-    "esbuild": "0.24.2",
-    "obsidian": "^1.7.2",
-    "tslib": "2.8.1",
-    "typescript": "^5.7.3"
-  },
-  "dependencies": {
-    "@delucis/if-env": "^1.1.2",
-    "ansi-colors": "^4.1.3",
-    "commander": "^13.1.0",
-    "commit-and-tag-version": "^12.5.0",
-    "dedent": "^1.5.3",
-    "dotenv": "^16.4.7",
-    "dotenv-cli": "^8.0.0"
-  },
-  "trustedDependencies": [
-    "@biomejs/biome",
-    "esbuild"
-  ]
+	"name": "my-thesaurus",
+	"version": "0.0.0",
+	"description": "Add automagically tags based on a thesaurus CSV.",
+	"main": "main.js",
+	"private": true,
+	"scripts": {
+		"prebuild": "tsc --noEmit --skipLibCheck",
+		"build": "node esbuild.config.mjs --production",
+		"dev:prod": "node esbuild.config.mjs --vault",
+		"dev": "node esbuild.config.mjs",
+		"export": "node esbuild.config.mjs --production --vault",
+		"bump": "dotenv -- node commit-and-tag-version.mjs",
+		"postbump": "dotenv -- if-env SKIP_POST_BUMP=true && echo skip bump || git push --follow-tags origin master",
+		"predeploy": "bun run bump",
+		"deploy": "pnpm run export",
+		"lint": "pnpm biome format --write src/"
+	},
+	"keywords": [],
+	"author": "Mara-Li",
+	"license": "MIT",
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/node": "^22.13.1",
+		"builtin-modules": "4.0.0",
+		"i18next": "^24.2.2",
+		"esbuild": "0.24.2",
+		"obsidian": "^1.7.2",
+		"tslib": "2.8.1",
+		"typescript": "^5.7.3"
+	},
+	"dependencies": {
+		"@delucis/if-env": "^1.1.2",
+		"ansi-colors": "^4.1.3",
+		"commander": "^13.1.0",
+		"commit-and-tag-version": "^12.5.0",
+		"dedent": "^1.5.3",
+		"dotenv": "^16.4.7",
+		"dotenv-cli": "^8.0.0",
+		"uniformize": "^2.2.0"
+	},
+	"trustedDependencies": ["@biomejs/biome", "esbuild"]
 }
