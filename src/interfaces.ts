@@ -1,9 +1,11 @@
 
 
-export interface <%= data.interfaceName %>Settings {
-	mySetting: string;
+export interface MyThesaurusSettings {
+	thesaurusPath: string;
+	excludedPath: string[];
 }
 
-export const DEFAULT_SETTINGS: <%= data.interfaceName %>Settings = {
-	mySetting: "default"
+export const DEFAULT_SETTINGS: MyThesaurusSettings = {
+	thesaurusPath: "",
+	excludedPath: []
 };

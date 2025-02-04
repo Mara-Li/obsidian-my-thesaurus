@@ -1,10 +1,10 @@
 import { type App, PluginSettingTab, Setting } from "obsidian";
-import <%= data.interfaceName %> from "./main";
+import MyThesaurus from "./main";
 
-export class <%= data.interfaceName %>SettingTab extends PluginSettingTab {
-	plugin: <%= data.interfaceName %>;
+export class MyThesaurusSettingTab extends PluginSettingTab {
+	plugin: MyThesaurus;
 
-	constructor(app: App, plugin: <%= data.interfaceName %>) {
+	constructor(app: App, plugin: MyThesaurus) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}
@@ -14,15 +14,6 @@ export class <%= data.interfaceName %>SettingTab extends PluginSettingTab {
 
 		containerEl.empty();
 
-		new Setting(containerEl)
-			.setName("Setting #1")
-			.setDesc("It's a secret")
-			.addText(text => text
-				.setPlaceholder("Enter your secret")
-				.setValue(this.plugin.settings.mySetting)
-				.onChange(async (value) => {
-					this.plugin.settings.mySetting = value;
-					await this.plugin.saveSettings();
-				}));
+		
 	}
 }
