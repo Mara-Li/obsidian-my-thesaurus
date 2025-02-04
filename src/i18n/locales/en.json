@@ -1,0 +1,42 @@
+{
+  "error": {
+    "csv": {
+      "columns": "The columns doesn't correspond with the settings.",
+      "header": "You can have only two column in your thesaurus. You have: {{- len}} columns.",
+      "malformed": "Your CSV is malformed: {{- len}} columns found.",
+      "separator": "The specified separator is invalid. You seems to use \"{{- sep}}\" as separator."
+    }
+  },
+  "settings": {
+    "columns": {
+      "synonyms": {
+        "desc": "These values will be recognized in the file content and the corresponding term will be applied.",
+        "title": "Synonym"
+      },
+      "term": {
+        "desc": "This value will be set as a tag in your properties.",
+        "title": "Term"
+      },
+      "title": "Column title"
+    },
+    "excludedPath": {
+      "desc": "Exclude files in theses paths when using the global command. ",
+      "regex": "Regex are supported.",
+      "separate": "Separate paths with coma, semicolon, spaces or newlines.",
+      "title": "Excluded path"
+    },
+    "separator": {
+      "desc": "CSV column separator.",
+      "tab": "tabulation",
+      "title": "Separator"
+    },
+    "thesaurusPath": {
+      "desc": "Path to your CSV thesaurus (in your vault).",
+      "error": "The provided file is not valide.",
+      "placeholder": "mon_thesaurus.csv",
+      "success": "The provided file is correct!",
+      "title": "Thesaurus",
+      "verify": "Verify validity of the file"
+    }
+  }
+}
