@@ -1,7 +1,6 @@
 import i18next from "i18next";
 import { Notice, Plugin, TFile, sanitizeHTMLToDom } from "obsidian";
 import { resources, translationLanguage } from "./i18n";
-
 import { DEFAULT_SETTINGS, type MyThesaurusSettings, type Thesaurus } from "./interfaces";
 import { MyThesaurusSettingTab } from "./settings";
 import "uniformize";
