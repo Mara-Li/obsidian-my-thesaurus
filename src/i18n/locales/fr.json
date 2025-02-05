@@ -1,11 +1,18 @@
 {
+  "command": {
+    "active": "Ajouter les tags du thésaurus au fichier actif"
+  },
   "error": {
     "csv": {
       "columns": "Les colonnes du CSV fourni ne correspondent pas avec les colonnes des paramètres.",
       "header": "Vous ne pouvez avoir que deux colonnes dans votre thésaurus. Vous avez {{- len}} colonnes.",
       "malformed": "Votre CSV est mal formé : {{- len}} colonnes trouvées.",
       "separator": "Le séparateur spécifié n'est pas le bon. Vous semblez utiliser \"{{- sep}}\" comme séparateur."
-    }
+    },
+    "file": {
+      "empty": "Le fichier {{- file}} est vide !"
+    },
+    "notFound": "Le thésaurus est introuvable au chemin fourni ({{-path}})."
   },
   "settings": {
     "columns": {
@@ -19,11 +26,11 @@
       },
       "title": "Titre des colonnes"
     },
-    "excludedPath": {
-      "desc": "Exclus les fichiers depuis ses chemins lors d'utilisation de la commande globale.",
+    "includedPaths": {
+      "desc": "Inclus les fichiers depuis ses chemins lors d'utilisation de la commande globale.",
       "regex": "Les expressions régulières sont supportées.",
-      "separate": "Séparer les chemins par une virgule, point virgule, un espace ou un retour à la ligne.",
-      "title": "Fichier exclus"
+      "separate": "Séparer les chemins par une virgule, point virgule ou un retour à la ligne.",
+      "title": "Chemins inclus"
     },
     "separator": {
       "desc": "Séparateur des colonnes du fichier CSV.",
@@ -38,5 +45,9 @@
       "title": "Thesaurus",
       "verify": "Verifier la validité du fichier"
     }
+  },
+  "success": {
+    "none": "Aucun tag à ajouter !",
+    "title": "Les tags suivants ont bien été ajoutés :"
   }
 }

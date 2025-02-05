@@ -2,7 +2,7 @@ import type { TFunction } from "i18next";
 
 export interface MyThesaurusSettings {
 	thesaurusPath: string;
-	excludedPath: string[];
+	includedPaths: string[];
 	separator: Separator;
 	columns: ColumnName;
 }
@@ -19,7 +19,7 @@ export type Translation = TFunction<"translation", undefined>;
 
 export const DEFAULT_SETTINGS: MyThesaurusSettings = {
 	thesaurusPath: "",
-	excludedPath: [],
+	includedPaths: [],
 	separator: ";",
 	columns: {
 		term: "term",

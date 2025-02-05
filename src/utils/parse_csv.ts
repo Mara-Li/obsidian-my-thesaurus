@@ -1,11 +1,11 @@
-import type { ColumnName, Separator, Thesaurus, Translation } from "./interfaces";
+import type { ColumnName, Separator, Thesaurus, Translation } from "../interfaces";
 
 function verifySeparator(header: string, sep: Separator): boolean {
 	return header.includes(sep);
 }
 
 function searchSeparator(header: string): Separator {
-	return header.match(/[,;\t|]/)?.[0] as Separator;
+	return header.match(/[,;\t\|]/)?.[0] as Separator;
 }
 
 function getColumn(
@@ -33,7 +33,7 @@ function getColumn(
 	return { indexKey, indexSynonyms };
 }
 
-export function verifCSV(
+export function getThesaurus(
 	fileContent: string,
 	separator: Separator,
 	ln: Translation,

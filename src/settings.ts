@@ -10,7 +10,7 @@ import {
 import type { MyThesaurusSettings, Separator } from "./interfaces";
 import type MyThesaurus from "./main";
 import { FileSuggester } from "./searchFile";
-import { verifCSV } from "./utils";
+import { getThesaurus } from "./utils";
 
 export class MyThesaurusSettingTab extends PluginSettingTab {
 	plugin: MyThesaurus;
@@ -91,7 +91,7 @@ export class MyThesaurusSettingTab extends PluginSettingTab {
 								}
 								const content = await this.app.vault.read(file);
 								try {
-									verifCSV(
+									getThesaurus(
 										content,
 										this.settings.separator,
 										i18next.t,
@@ -110,16 +110,19 @@ export class MyThesaurusSettingTab extends PluginSettingTab {
 			});
 
 		new Setting(containerEl)
-			.setName(i18next.t("settings.excludedPath.title"))
+			.setName(i18next.t("settings.includedPaths.title"))
 			.setHeading()
 			.setDesc(
 				sanitizeHTMLToDom(
-					`${i18next.t("settings.excludedPath.desc")}<br>${i18next.t("settings.excludedPath.separate")}<br>${i18next.t("settings.excludedPath.regex")}`
+					`${i18next.t("settings.includedPaths.desc")}<br>${i18next.t("settings.includedPaths.separate")}<br>${i18next.t("settings.includedPaths.regex")}`
 				)
 			)
 			.addTextArea((text) => {
-				text.setValue(this.settings.excludedPath.join("\n")).onChange(async (value) => {
-					this.settings.excludedPath = value.split(/[\n,; ]+/).map((path) => path.trim());
+				text.setValue(this.settings.includedPaths.join("\n")).onChange(async (value) => {
+					this.settings.includedPaths = value
+						.split(/[\n,;]+/)
+						.map((path) => path.trim())
+						.filter((path) => path.length > 0);
 					await this.plugin.saveSettings();
 				});
 			});
