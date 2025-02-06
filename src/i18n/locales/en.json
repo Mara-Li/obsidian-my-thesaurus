@@ -1,6 +1,7 @@
 {
   "command": {
-    "active": "Add thesaurus tags to active file"
+    "active": "Add thesaurus tags to active file",
+    "all": "Parse all"
   },
   "error": {
     "csv": {
@@ -12,7 +13,20 @@
     "file": {
       "empty": "The file {{- file}} is empty!"
     },
+    "noFiles": "No files to parse found!",
+    "noPaths": "No file paths have been included in the parameters.",
     "notFound": "The thesaurus is not found at the provided path ({{- path}})."
+  },
+  "modal": {
+    "errors": "Errors",
+    "skips": "Skipped",
+    "success": "Success",
+    "title": "MyThesaurus - Results"
+  },
+  "notice": {
+    "done": "Done !",
+    "loading": "Loading...",
+    "start": "Start treatment..."
   },
   "settings": {
     "columns": {

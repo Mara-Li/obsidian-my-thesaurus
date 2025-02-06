@@ -12,6 +12,15 @@ export type ColumnName = {
 	synonyms: string;
 };
 
+export type ParseResult = {
+	file: string;
+	tags: string[];
+	errors?: string;
+	type?: "success" | "error" | "skip";
+};
+
+export type ParseResults = ParseResult[];
+
 export type Separator = ";" | "," | "\t" | "|";
 
 export type Thesaurus = Record<string, Set<string>>;

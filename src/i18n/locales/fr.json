@@ -1,6 +1,7 @@
 {
   "command": {
-    "active": "Ajouter les tags du thésaurus au fichier actif"
+    "active": "Ajouter les tags du thésaurus au fichier actif",
+    "all": "Parser tous les fichiers"
   },
   "error": {
     "csv": {
@@ -12,7 +13,20 @@
     "file": {
       "empty": "Le fichier {{- file}} est vide !"
     },
+    "noFiles": "Aucun fichier n'a été trouvé !",
+    "noPaths": "Aucun chemins de fichiers n'a été inclus dans les paramètres.",
     "notFound": "Le thésaurus est introuvable au chemin fourni ({{-path}})."
+  },
+  "modal": {
+    "errors": "Erreurs",
+    "skips": "Passés",
+    "success": "Succès",
+    "title": "MyThesaurus - Résultat"
+  },
+  "notice": {
+    "done": "Fini !",
+    "loading": "Chargement...",
+    "start": "Début du traitement..."
   },
   "settings": {
     "columns": {
