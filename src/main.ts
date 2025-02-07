@@ -112,7 +112,6 @@ export default class MyThesaurus extends Plugin {
 			}
 		}
 		//remove duplicate
-		console.log(files);
 		return [...new Set(files)];
 	}
 
