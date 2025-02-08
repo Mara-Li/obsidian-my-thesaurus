@@ -16,18 +16,8 @@
 		"isolatedModules": true,
 		"resolveJsonModule": true,
 		"strictNullChecks": true,
-		"lib": [
-			"DOM",
-			"ES5",
-			"ES6",
-			"ES7",
-			"ES2015",
-			"ES2021",
-			"ES2022",
-			"DOM.Iterable"
-		]
+		"types": ["@types/bun"],
+		"lib": ["DOM", "ES5", "ES6", "ES7", "ES2015", "ES2021", "ES2022", "DOM.Iterable"]
 	},
-	"include": [
-		"**/*.ts"
-	]
+	"include": ["**/*.ts"]
 }
