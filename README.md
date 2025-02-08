@@ -2,6 +2,8 @@
 
 Automagically adds tags based on a thesaurus CSV.  
 
+-> [French version](./README.fr.md)
+
 ## ⚙️ Settings  
 
 1. <ins>Separator</ins>: The separator used in the CSV file. Supported separators are `,`, `;`, `|`, and `tabulation`.  
