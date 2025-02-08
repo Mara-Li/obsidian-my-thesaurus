@@ -35,7 +35,7 @@ export class MyThesaurusSettingTab extends PluginSettingTab {
 				dropdown
 					.addOption(";", ";")
 					.addOption(",", ",")
-					.addOption("\t", `\\t (${i18next.t("settings.separator.tab")})`)
+					.addOption("\t", `${i18next.t("settings.separator.tab")}`)
 					.addOption("|", "|")
 					.setValue(this.settings.separator)
 					.onChange(async (value) => {
