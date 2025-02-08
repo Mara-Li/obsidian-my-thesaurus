@@ -1,9 +1,29 @@
-# My Thesaurus
+# My Thesaurus  
 
-Automagically adds tags based on a thesaurus CSV.
+Automagically adds tags based on a thesaurus CSV.  
 
-## ⚙️ Usage
+## ⚙️ Settings  
 
+1. <u>Separator</u>: The separator used in the CSV file. Supported separators are `,`, `;`, `|`, and `tabulation`.  
+2. <u>Column title</u>: The title of the column in the CSV file that contains the tags:  
+    - **Term**: The column contains the tags that must be set by the plugin.  
+    - **Synonyms**: The column contains the synonyms that must be recognized by the plugin.  
+3. <u>Thesaurus</u>: Path to the file containing the thesaurus. The file must be a CSV file and must be in your vault. You can click on the `save` button to ensure the file is valid (the path is correct, the file exists, and it's well-formed).  
+    > [!WARNING]  
+    > If, for some reason, the file is moved, you need to update the path in the settings! It won't be updated automatically.  
+4. <u>Included paths</u>: Files in these folders will be included when using the command `My Thesaurus: Parse all files`. You can separate the paths with a comma, semicolon, or newline. Moreover, regex is supported.  
+    > [!TIP]  
+    > You can include all the files in your vault by using `.*` as the path!  
+
+## 📝 Usage  
+
+The plugin has two commands:  
+
+1. <u>My Thesaurus: Parse all files</u>: This command will parse all the files in the included paths and add the tags based on the thesaurus. At the end, a message will be displayed with the results, including:  
+    - **Errors**: The files that encountered an error and the specific error message.  
+    - **Skipped files**: The files that have been skipped because no synonym was found.  
+    - **Success**: The files that have been successfully parsed, along with the tags that have been added.  
+2. <u>My Thesaurus: Parse current file</u>: This command will parse the current file and add the tags based on the thesaurus.  
 
 ## 📥 Installation
 
@@ -19,7 +39,7 @@ Automagically adds tags based on a thesaurus CSV.
 ### 🎼 Languages
 
 - [x] English
-- [ ] French
+- [x] French
 
 To add a translation:
 1. Fork the repository
