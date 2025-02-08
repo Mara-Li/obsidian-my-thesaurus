@@ -12,10 +12,8 @@ const mockTranslation = ((key: string, options?: any) => {
 	};
 	return translations[key] || key;
 }) as Translation;
-
+const columnNames: ColumnName = { term: "Term", synonyms: "Synonyms" };
 describe("getThesaurus", () => {
-	const columnNames: ColumnName = { term: "Term", synonyms: "Synonyms" };
-
 	it("should parse a valid CSV content", () => {
 		const csvContent = "Term,Synonyms\nword1,synonym1\nword2,synonym2";
 		const separator: Separator = ",";
@@ -25,7 +23,8 @@ describe("getThesaurus", () => {
 			word2: new Set(["synonym2"]),
 		});
 	});
-
+});
+describe("error handling", () => {
 	it("should throw an error for invalid column names", () => {
 		const csvContent = "Invalid,Header\nword1,synonym1";
 		const separator: Separator = ",";
@@ -57,7 +56,8 @@ describe("getThesaurus", () => {
 			getThesaurus(csvContent, separator, mockTranslation, columnNames)
 		).toThrow("Malformed line with length: 1");
 	});
-
+});
+describe("duplicate terms and synonyms", () => {
 	it("should not have duplicate terms in the result", () => {
 		const csvContent = "Term,Synonyms\nword1,synonym1\nword1,synonym2";
 		const separator: Separator = ",";
