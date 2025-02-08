@@ -1,6 +1,6 @@
 {
 	"name": "my-thesaurus",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Add automagically tags based on a thesaurus CSV.",
 	"main": "main.js",
 	"private": true,
