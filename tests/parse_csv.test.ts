@@ -1,6 +1,6 @@
 import { describe, expect, it } from "bun:test";
 import type { ColumnName, Separator, Translation } from "../src/interfaces";
-import { getThesaurus } from "../src/utils";
+import { getHeader, getThesaurus } from "../src/utils";
 import "uniformize";
 
 const mockTranslation = ((key: string, options?: any) => {
@@ -81,5 +81,39 @@ describe("duplicate terms and synonyms", () => {
 		expect(Object.keys(thesaurus).length).toBe(2);
 		expect(thesaurus["word1"]).toEqual(new Set(["synonym1"]));
 		expect(thesaurus["word2"]).toEqual(new Set(["synonym1"]));
+	});
+});
+describe("markdown table", () => {
+	it("header should be two even with markdown table", () => {
+		const csvContent =
+			"| Term | Synonyms |\n| --- | --- |\n| word1 | synonym1\nword2 | synonym2 |";
+		const separator: Separator = "|";
+		const fileContent = csvContent.split("\n");
+		const header = getHeader(fileContent, separator, mockTranslation);
+		expect(header).toEqual(["Term", "Synonyms"]);
+	});
+	it("should parse a valid markdown table", () => {
+		const csvContent =
+			"| Term  | Synonyms  |\n" +
+			"| ----- | -------- |\n" +
+			"| word1 | synonym1 |\n" +
+			"| word2 | synonym2 |\n";
+		const separator: Separator = "md";
+		const thesaurus = getThesaurus(csvContent, separator, mockTranslation, columnNames);
+		expect(thesaurus).toEqual({
+			word1: new Set(["synonym1"]),
+			word2: new Set(["synonym2"]),
+		});
+	});
+	it("should throw an error for too much columns in a markdown table", () => {
+		const csvContent =
+			"| Tag  | Synonyme  |Extra|\n" +
+			"| ----- | -------- |--|\n" +
+			"| word1 | synonym1 |machin|\n" +
+			"| word2 | synonym2 |truc|";
+		const separator: Separator = "md";
+		expect(() =>
+			getThesaurus(csvContent, separator, mockTranslation, columnNames)
+		).toThrow("Invalid header length: 3");
 	});
 });

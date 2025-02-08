@@ -33,6 +33,17 @@ function getColumn(
 	return { indexKey, indexSynonyms };
 }
 
+export function getHeader(fileContent: string[], separator: Separator, ln: Translation) {
+	const header = fileContent[0]
+		.split(separator)
+		.filter((col) => col.trim() !== "")
+		.map((col) => col.trim());
+	if (header.length !== 2) {
+		throw new Error(ln("error.csv.header", { len: header.length }));
+	}
+	return header;
+}
+
 export function getThesaurus(
 	fileContent: string,
 	separator: Separator,
@@ -40,18 +51,21 @@ export function getThesaurus(
 	columnNames: ColumnName
 ) {
 	//verify if they are only two columns
+	const isMd = separator === "md";
+	separator = isMd ? "|" : separator;
 	const lines = fileContent.split("\n");
 	if (!verifySeparator(lines[0], separator))
 		throw new Error(ln("error.csv.separator", { sep: searchSeparator(lines[0]) }));
 
-	const header = lines[0].split(separator);
+	const header = getHeader(lines, separator, ln);
 	if (header.length !== 2) {
 		throw new Error(ln("error.csv.header", { len: header.length }));
 	}
 	const { indexKey, indexSynonyms } = getColumn(header, columnNames, ln);
 	const thesaurus: Thesaurus = {};
-	for (const line of lines.slice(1).filter((line) => line.trim() !== "")) {
-		const columns = line.split(separator);
+	const lineSlice = isMd ? 2 : 1;
+	for (const line of lines.slice(lineSlice).filter((line) => line.trim() !== "")) {
+		const columns = line.split(separator).filter((col) => col.trim() !== "");
 
 		if (columns.length > 0 && columns.length !== 2)
 			throw new Error(ln("error.csv.malformed", { len: columns.length }));

@@ -1,5 +1,5 @@
 import i18next from "i18next";
-import { Notice, Plugin, TFile, sanitizeHTMLToDom } from "obsidian";
+import { Notice, Plugin, TFile, getFrontMatterInfo, sanitizeHTMLToDom } from "obsidian";
 import { resources, translationLanguage } from "./i18n";
 import {
 	DEFAULT_SETTINGS,
@@ -86,14 +86,24 @@ export default class MyThesaurus extends Plugin {
 		const thesaurusFile = this.app.vault.getAbstractFileByPath(
 			this.settings.thesaurusPath
 		);
+		const ext = this.settings.separator === "md" ? "md" : "csv";
 		if (
 			!thesaurusFile ||
 			!(thesaurusFile instanceof TFile) ||
-			thesaurusFile.extension !== "csv"
+			thesaurusFile.extension !== ext
 		) {
 			throw new Error(i18next.t("error.notFound"));
 		}
-		return await this.app.vault.read(thesaurusFile);
+		let contents = await this.app.vault.read(thesaurusFile);
+		if (ext === "md") {
+			contents = contents.replace(/^\s*\n/gm, "");
+			//remove the frontmatter
+			const frontmatterInfo = getFrontMatterInfo(contents);
+
+			if (frontmatterInfo.exists) return contents.slice(frontmatterInfo.contentStart);
+			return contents;
+		}
+		return contents;
 	}
 
 	scanAllFiles(): TFile[] {

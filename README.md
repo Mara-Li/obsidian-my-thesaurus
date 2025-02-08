@@ -1,12 +1,17 @@
 # My Thesaurus  
 
-Automagically adds tags based on a thesaurus CSV.  
+Automagically adds tags based on a thesaurus CSV or a Markdown table.  
 
 -> [French version](./README.fr.md)
 
+> [!NOTE]
+> If you choose to use a markdown file, the Markdown table must be the only content in the file.
+> But, you can have a frontmatter at the beginning of the file.
+
+
 ## ⚙️ Settings  
 
-1. <ins>Separator</ins>: The separator used in the CSV file. Supported separators are `,`, `;`, `|`, and `tabulation`.  
+1. <ins>Separator</ins>: The separator used in the CSV file. Supported separators are `,`, `;`, `|`, `tabulation` and `markdown`. See the note above for the markdown separator.
 2. <ins>Column title</ins>: The title of the column in the CSV file that contains the tags:  
     - **Term**: The column contains the tags that must be set by the plugin.  
     - **Synonyms**: The column contains the synonyms that must be recognized by the plugin.  

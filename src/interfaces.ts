@@ -21,7 +21,7 @@ export type ParseResult = {
 
 export type ParseResults = ParseResult[];
 
-export type Separator = ";" | "," | "\t" | "|";
+export type Separator = ";" | "," | "\t" | "|" | "md";
 
 export type Thesaurus = Record<string, Set<string>>;
 export type Translation = TFunction<"translation", undefined>;

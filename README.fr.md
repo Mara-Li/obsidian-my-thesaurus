@@ -1,6 +1,10 @@
 # My Thesaurus  
 
-Ajoute automatiquement des tags en fonction d’un thésaurus au format CSV.  
+Ajoute automatiquement des tags en fonction d’un thésaurus au format CSV ou d'une table Markdown.  
+
+> [!NOTE]
+> Si vous choisissez d'utiliser un fichier Markdown, la table Markdown doit être le seul contenu du fichier.
+> Cependant, vous pouvez avoir un frontmatter au début du fichier.
 
 ## ⚙️ Paramètres  
 

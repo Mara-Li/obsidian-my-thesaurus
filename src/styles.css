@@ -57,3 +57,8 @@
 .my-thesaurus.modal-title {
 	text-align: center;
 }
+
+.my-thesaurus .is-invalid input {
+	border-color: var(--text-error);
+	box-shadow: none;
+}

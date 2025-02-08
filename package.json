@@ -1,7 +1,7 @@
 {
 	"name": "my-thesaurus",
 	"version": "0.0.2",
-	"description": "Add automagically tags based on a thesaurus CSV.",
+	"description": "Add automagically tags based on a thesaurus (CSV or markdown table).",
 	"main": "main.js",
 	"private": true,
 	"scripts": {
@@ -40,8 +40,5 @@
 		"dotenv-cli": "^8.0.0",
 		"uniformize": "^2.2.0"
 	},
-	"trustedDependencies": [
-		"@biomejs/biome",
-		"esbuild"
-	]
+	"trustedDependencies": ["@biomejs/biome", "esbuild"]
 }
