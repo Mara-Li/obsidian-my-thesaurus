@@ -1,3 +1,8 @@
+## [0.0.3](https://github.com/Mara-Li/obsidian-my-thesaurus/compare/0.0.2...0.0.3) (2025-02-08)
+### Features
+
+* allow markdown table ([c253daf](https://github.com/Mara-Li/obsidian-my-thesaurus/commit/c253dafb0e525eff4e1a5627baae010c37f7c67d))
+
 ## [0.0.2](https://github.com/Mara-Li/obsidian-my-thesaurus/compare/0.0.1...0.0.2) (2025-02-08)
 
 ## 0.0.1 (2025-02-08)
