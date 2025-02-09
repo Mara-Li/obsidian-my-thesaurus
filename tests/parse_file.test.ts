@@ -3,7 +3,7 @@ import type { Thesaurus } from "../src/interfaces";
 import { getTags } from "../src/utils";
 
 describe("should return tags", () => {
-	it("should return tags if synonyms are found in the content", () => {
+	it("passing test", () => {
 		const content = "This content contains synonym1 and synonym4.";
 		const thesaurus: Thesaurus = {
 			tag1: new Set(["synonym1", "synonym2"]),
@@ -14,7 +14,7 @@ describe("should return tags", () => {
 		expect(result).toEqual(["tag1", "tag2"]);
 	});
 
-	it("should handle case insensitive matches", () => {
+	it("case insensitive", () => {
 		const content = "This content contains Synonym1 and SYNONYM4.";
 		const thesaurus: Thesaurus = {
 			tag1: new Set(["synonym1", "synonym2"]),
@@ -24,7 +24,7 @@ describe("should return tags", () => {
 		const result = getTags(content, thesaurus);
 		expect(result).toEqual(["tag1", "tag2"]);
 	});
-	it("should return the two tags related to the synonyms", () => {
+	it("synonym on the same tags", () => {
 		const content = "This content contains synonym4.";
 		const thesaurus: Thesaurus = {
 			tag1: new Set(["synonym1", "synonym4"]),
@@ -35,13 +35,12 @@ describe("should return tags", () => {
 		expect(result).toEqual(["tag1", "tag2"]);
 	});
 
-	it("should return the tags if the synonyms is equal to the tag", () => {
+	it("synonym = tag", () => {
 		const content = "This content contains tag1.";
 		const thesaurus: Thesaurus = {
 			tag1: new Set(["tag1", "synonym1"]),
 			tag2: new Set(["synonym3", "synonym4"]),
 		};
-
 		const result = getTags(content, thesaurus);
 		expect(result).toEqual(["tag1"]);
 	});

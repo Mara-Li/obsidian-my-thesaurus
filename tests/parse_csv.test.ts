@@ -14,7 +14,7 @@ const mockTranslation = ((key: string, options?: any) => {
 }) as Translation;
 const columnNames: ColumnName = { term: "Term", synonyms: "Synonyms" };
 describe("getThesaurus", () => {
-	it("should parse a valid CSV content", () => {
+	it("passing", () => {
 		const csvContent = "Term,Synonyms\nword1,synonym1\nword2,synonym2";
 		const separator: Separator = ",";
 		const thesaurus = getThesaurus(csvContent, separator, mockTranslation, columnNames);
@@ -25,7 +25,7 @@ describe("getThesaurus", () => {
 	});
 });
 describe("error handling", () => {
-	it("should throw an error for invalid column names", () => {
+	it("invalid column names", () => {
 		const csvContent = "Invalid,Header\nword1,synonym1";
 		const separator: Separator = ",";
 		expect(() =>
@@ -33,7 +33,7 @@ describe("error handling", () => {
 		).toThrow("Invalid column names");
 	});
 
-	it("should throw an error for invalid separator", () => {
+	it("invalid separator", () => {
 		const csvContent = "Term;Synonyms\nword1;synonym1";
 		const separator: Separator = ",";
 		expect(() =>
@@ -41,7 +41,7 @@ describe("error handling", () => {
 		).toThrow("Invalid separator: ;");
 	});
 
-	it("should throw an error for invalid header length", () => {
+	it("invalid header length", () => {
 		const csvContent = "Term,Synonyms,Extra\nword1,synonym1";
 		const separator: Separator = ",";
 		expect(() =>
@@ -49,7 +49,7 @@ describe("error handling", () => {
 		).toThrow("Invalid header length: 3");
 	});
 
-	it("should throw an error for malformed line", () => {
+	it("malformed line", () => {
 		const csvContent = "Term,Synonyms\nword1,synonym1\nword2";
 		const separator: Separator = ",";
 		expect(() =>
@@ -58,7 +58,7 @@ describe("error handling", () => {
 	});
 });
 describe("duplicate terms and synonyms", () => {
-	it("should not have duplicate terms in the result", () => {
+	it("terms", () => {
 		const csvContent = "Term,Synonyms\nword1,synonym1\nword1,synonym2";
 		const separator: Separator = ",";
 		const thesaurus = getThesaurus(csvContent, separator, mockTranslation, columnNames);
@@ -66,7 +66,7 @@ describe("duplicate terms and synonyms", () => {
 		expect(thesaurus["word1"]).toEqual(new Set(["synonym1", "synonym2"]));
 	});
 
-	it("should not have duplicate synonyms in the result", () => {
+	it("synonyms", () => {
 		const csvContent = "Term,Synonyms\nword1,synonym1\nword1,synonym1";
 		const separator: Separator = ",";
 		const thesaurus = getThesaurus(csvContent, separator, mockTranslation, columnNames);
@@ -74,7 +74,7 @@ describe("duplicate terms and synonyms", () => {
 		expect(thesaurus["word1"]).toEqual(new Set(["synonym1"]));
 	});
 
-	it("should not have duplicate terms and synonyms in the result", () => {
+	it("terms and synonyms", () => {
 		const csvContent = "Term,Synonyms\nword1,synonym1\nword2,synonym1";
 		const separator: Separator = ",";
 		const thesaurus = getThesaurus(csvContent, separator, mockTranslation, columnNames);
@@ -84,7 +84,7 @@ describe("duplicate terms and synonyms", () => {
 	});
 });
 describe("markdown table", () => {
-	it("header should be two even with markdown table", () => {
+	it("validate header", () => {
 		const csvContent =
 			"| Term | Synonyms |\n| --- | --- |\n| word1 | synonym1\nword2 | synonym2 |";
 		const separator: Separator = "|";
@@ -92,7 +92,7 @@ describe("markdown table", () => {
 		const header = getHeader(fileContent, separator, mockTranslation);
 		expect(header).toEqual(["Term", "Synonyms"]);
 	});
-	it("should parse a valid markdown table", () => {
+	it("passing", () => {
 		const csvContent =
 			"| Term  | Synonyms  |\n" +
 			"| ----- | -------- |\n" +
@@ -105,7 +105,7 @@ describe("markdown table", () => {
 			word2: new Set(["synonym2"]),
 		});
 	});
-	it("should throw an error for too much columns in a markdown table", () => {
+	it("too much column", () => {
 		const csvContent =
 			"| Tag  | Synonyme  |Extra|\n" +
 			"| ----- | -------- |--|\n" +
