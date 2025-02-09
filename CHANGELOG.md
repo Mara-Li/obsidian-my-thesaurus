@@ -1,3 +1,8 @@
+## [0.0.4](https://github.com/Mara-Li/obsidian-my-thesaurus/compare/0.0.3...0.0.4) (2025-02-09)
+### Bug Fixes
+
+* throw error when the path to the thesaurus is empty ([77b02f0](https://github.com/Mara-Li/obsidian-my-thesaurus/commit/77b02f04620bc8e88666146e84a85fb662c6a181))
+
 ## [0.0.3](https://github.com/Mara-Li/obsidian-my-thesaurus/compare/0.0.2...0.0.3) (2025-02-08)
 ### Features
 

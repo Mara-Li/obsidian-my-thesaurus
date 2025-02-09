@@ -1,7 +1,7 @@
 {
 	"id": "my-thesaurus",
 	"name": "My Thesaurus",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"minAppVersion": "1.5.12",
 	"description": "Automagically adds tags based on a simple csv file or a Markdown table.",
 	"author": "mara-li",
