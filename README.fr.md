@@ -6,6 +6,29 @@ Ajoute automatiquement des tags en fonction d’un thésaurus au format CSV ou d
 > Si vous choisissez d'utiliser un fichier Markdown, la table Markdown doit être le seul contenu du fichier.
 > Cependant, vous pouvez avoir un frontmatter au début du fichier.
 
+## 📚 Format du Thésaurus
+
+Le thésaurus doit être un tableau avec deux colonnes : une pour les termes et une pour les synonymes. La première ligne doit contenir les en-têtes de colonnes.
+
+> [!TIP]  
+> Le thésaurus peut être un fichier CSV comme ceci :  
+> ```csv
+> Terme,Synonyme
+> ordinateur,PC
+> ordinateur,machine
+> ordinateur,vélo
+> ```
+>
+> Ou en format Markdown :
+> ```markdown
+> | Terme      | Synonyme      |
+> |------------|---------------|
+> | ordinateur | PC            |
+> | ordinateur | machine       |
+> | ordinateur | processeur    |
+> ```
+
+
 ## ⚙️ Paramètres  
 
 1. <ins>Séparateur</ins> : Le séparateur utilisé dans le fichier CSV. Les séparateurs pris en charge sont `,`, `;`, `|` et `tabulation`.  
