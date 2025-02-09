@@ -14,6 +14,7 @@
       "empty": "The file {{- file}} is empty!"
     },
     "noFiles": "No files to parse found!",
+    "noPath": "The path to the thesaurus is empty!",
     "noPaths": "No file paths have been included in the parameters.",
     "notFound": "The thesaurus is not found at the provided path ({{- path}})."
   },

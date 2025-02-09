@@ -83,6 +83,8 @@ export default class MyThesaurus extends Plugin {
 	}
 
 	async readThesaurus() {
+		if (this.settings.thesaurusPath.length === 0)
+			throw new Error(i18next.t("error.noPath"));
 		const thesaurusFile = this.app.vault.getAbstractFileByPath(
 			this.settings.thesaurusPath
 		);
