@@ -110,3 +110,7 @@ To add a translation:
     - Add `import * as <lang> from "./locales/<lang>.json";`
     - Edit the `ressource` part with adding : `<lang> : {translation: <lang>}`
 
+---
+# Credits
+
+- Inspired by [pmartinolli/MyThesaurus](https://github.com/pmartinolli/MyThesaurus)
