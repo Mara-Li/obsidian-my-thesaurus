@@ -1,5 +1,5 @@
 import i18next from "i18next";
-import { Notice, Plugin, TFile, getFrontMatterInfo, sanitizeHTMLToDom } from "obsidian";
+import {Notice, Plugin, TFile, getFrontMatterInfo, sanitizeHTMLToDom, type FrontMatterCache} from "obsidian";
 import { resources, translationLanguage } from "./i18n";
 import {
 	DEFAULT_SETTINGS,
@@ -15,13 +15,29 @@ import { getTags, getThesaurus } from "./utils";
 
 export default class MyThesaurus extends Plugin {
 	settings!: MyThesaurusSettings;
+	
+	getTagAsArray(tag: string | string[]) {
+		if (!Array.isArray(tag)) return [tag];
+		return tag;
+	}
+	
+	getFileTags(frontmatter: FrontMatterCache) {
+		const tags = [];
+		if (frontmatter.tags)
+			tags.push(...this.getTagAsArray(frontmatter.tags));
+		if (frontmatter.tag)
+			tags.push(...this.getTagAsArray(frontmatter.tag));
+		return tags;
+	}
 
 	async addTagsToNote(tags: string[], file: TFile) {
-		const currentTags = this.app.metadataCache.getFileCache(file)?.tags || [];
+		const frontmatter = this.app.metadataCache.getFileCache(file)?.frontmatter || {};
+		const currentTags = this.getFileTags(frontmatter);
 		const newTags = [...new Set([...currentTags, ...tags])];
 		if (newTags.length === 0) return;
 		await this.app.fileManager.processFrontMatter(file, (frontmatter) => {
-			frontmatter.tags = newTags;
+			if (frontmatter.tag) frontmatter.tag = newTags;
+			else frontmatter.tags = newTags;
 		});
 	}
 
