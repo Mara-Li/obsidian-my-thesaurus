@@ -1,3 +1,8 @@
+## [0.0.5](https://github.com/Mara-Li/obsidian-my-thesaurus/compare/0.0.4...0.0.5) (2025-02-18)
+### Bug Fixes
+
+* tags & tag lost ([aa3b8ef](https://github.com/Mara-Li/obsidian-my-thesaurus/commit/aa3b8ef598ce977eaa3e015b72cee07572c6a3d3))
+
 ## [0.0.4](https://github.com/Mara-Li/obsidian-my-thesaurus/compare/0.0.3...0.0.4) (2025-02-09)
 ### Bug Fixes
 
