@@ -1,3 +1,15 @@
+## [0.0.8](https://github.com/Mara-Li/obsidian-my-thesaurus/compare/0.0.7...0.0.8) (2025-02-21)
+### Features
+
+* **csv:** allow more than 2 columns ([df3f1c6](https://github.com/Mara-Li/obsidian-my-thesaurus/commit/df3f1c6dd625fcb508a7c360e8f5c5d853839f44))
+* **tests:** add constants for mock translations and enhance CSV parsing tests ([1b50050](https://github.com/Mara-Li/obsidian-my-thesaurus/commit/1b50050700d386a35061d79c119cafb77ed04b87))
+* **tests:** add test for error handling with insufficient columns in CSV ([86fcbc2](https://github.com/Mara-Li/obsidian-my-thesaurus/commit/86fcbc23d02697177c8e0afa2676859be4826b55))
+* **utils:** add array comparison and missing elements functions for tag management ([25c6fab](https://github.com/Mara-Li/obsidian-my-thesaurus/commit/25c6fab0865458f45d8ce4e079f1dc9cbe601001))
+
+### Bug Fixes
+
+* **csv:** enhance CSV parsing with separator regex and column count validation ([5abff9c](https://github.com/Mara-Li/obsidian-my-thesaurus/commit/5abff9cf66edfb3122d568fe97d08a7b51d653bb))
+
 ## [0.0.7](https://github.com/Mara-Li/obsidian-my-thesaurus/compare/0.0.6...0.0.7) (2025-02-21)
 
 ## [0.0.6](https://github.com/Mara-Li/obsidian-my-thesaurus/compare/0.0.5...0.0.6) (2025-02-21)
