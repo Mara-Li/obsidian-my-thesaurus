@@ -1,11 +1,11 @@
 import i18next from "i18next";
 import {
+	type FrontMatterCache,
 	Notice,
 	Plugin,
 	TFile,
 	getFrontMatterInfo,
 	sanitizeHTMLToDom,
-	type FrontMatterCache,
 } from "obsidian";
 import { resources, translationLanguage } from "./i18n";
 import {
@@ -18,7 +18,7 @@ import {
 import { MyThesaurusSettingTab } from "./settings";
 import "uniformize";
 import { ResultModals } from "./modals";
-import { getTags, getThesaurus } from "./utils";
+import { areArraysEqual, findMissingElements, getTags, getThesaurus } from "./utils";
 
 export default class MyThesaurus extends Plugin {
 	settings!: MyThesaurusSettings;
@@ -35,21 +35,32 @@ export default class MyThesaurus extends Plugin {
 		return tags;
 	}
 
-	async addTagsToNote(tags: string[], file: TFile) {
-		const frontmatter = this.app.metadataCache.getFileCache(file)?.frontmatter || {};
-		const currentTags = this.getFileTags(frontmatter);
+	async addTagsToNote(
+		tags: string[],
+		file: TFile,
+		currentTags: string[]
+	): Promise<boolean> {
+		if (areArraysEqual(tags, currentTags)) return false;
 		const newTags = [...new Set([...currentTags, ...tags])];
-		if (newTags.length === 0) return;
+		if (newTags.length === 0) return false;
 		await this.app.fileManager.processFrontMatter(file, (frontmatter) => {
 			if (frontmatter.tag) frontmatter.tag = newTags;
 			else frontmatter.tags = newTags;
 		});
+		return true;
 	}
 
 	notice(message: string | DocumentFragment, silent = false) {
-		if (!silent) {
-			new Notice(message);
-		}
+		if (!silent) new Notice(message);
+	}
+
+	skip(file: TFile, silent = false): ParseResult {
+		this.notice(i18next.t("success.none"), silent);
+		return {
+			file: file.basename,
+			tags: [],
+			type: "skip",
+		};
 	}
 
 	async parseFile(
@@ -73,24 +84,22 @@ export default class MyThesaurus extends Plugin {
 				...getTags(file.basename, thesaurus, this.settings.removeAccents)
 			);
 			if (tags.length > 0) {
-				await this.addTagsToNote(tags, file);
-				const successMsg = sanitizeHTMLToDom(
-					`<span class="success">${i18next.t("success.title")}</span>${tags.map((tag) => `<li><code>${tag}</code></li>`).join("")}`
-				);
-				this.notice(successMsg, silent);
-				return {
-					file: file.basename,
-					tags: tags,
-					type: "success",
-				};
-			} else {
-				this.notice(i18next.t("success.none"), silent);
-				return {
-					file: file.basename,
-					tags: [],
-					type: "skip",
-				};
-			}
+				const frontmatter = this.app.metadataCache.getFileCache(file)?.frontmatter || {};
+				const currentTags = this.getFileTags(frontmatter);
+				const added = await this.addTagsToNote(tags, file, currentTags);
+				if (added) {
+					const missingTags = findMissingElements(currentTags, tags);
+					const successMsg = sanitizeHTMLToDom(
+						`<span class="success">${i18next.t("success.title")}</span>${missingTags.map((tag) => `<li><code>${tag}</code></li>`).join("")}`
+					);
+					this.notice(successMsg, silent);
+					return {
+						file: file.basename,
+						tags: tags,
+						type: "success",
+					};
+				} else return this.skip(file, silent);
+			} else return this.skip(file, silent);
 		} catch (error) {
 			this.notice(
 				sanitizeHTMLToDom(`<span class="errors">${(error as Error).message}</span>`),
