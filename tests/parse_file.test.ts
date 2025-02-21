@@ -77,3 +77,20 @@ describe("should not return tags", () => {
 		expect(result).toEqual([]);
 	});
 });
+
+describe("Find without accents", () => {
+	const thesaurus: Thesaurus = {
+			cafe: new Set(["cafe", "chocolate"]),
+			role: new Set(["role", "roliste"]),
+		};
+	it("should find tag with accents", () => {
+		const content = "This content contains café.";
+		const result = getTags(content, thesaurus, true);
+		expect(result).toEqual(["cafe"]);
+	});
+	it("should find tag without accents", () => {
+		const content = "This content contains cafe.";
+		const result = getTags(content, thesaurus, true);
+		expect(result).toEqual(["cafe"]);
+	});
+});

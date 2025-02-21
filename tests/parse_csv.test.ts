@@ -117,3 +117,29 @@ describe("markdown table", () => {
 		).toThrow("Invalid header length: 3");
 	});
 });
+describe("With accents", () => {
+	it("passing markdown table", () => {
+		const csvContent =
+			"| Term  | Synonyms  |\n" +
+			"| ----- | -------- |\n" +
+			"| café | café |\n" +
+			"| rôle | rôle |\n";
+		const expected = {
+			café: new Set(["cafe"]),
+			rôle: new Set(["role"]),
+		}
+		const separator: Separator = "md";
+		const thesaurus = getThesaurus(csvContent, separator, mockTranslation, columnNames, true);
+		expect(thesaurus).toEqual(expected);
+	})
+	it("passing csv", () =>{
+		const csvContent = "Term,Synonyms\ncafé,café\nrôle,rôle";
+		const expected = {
+			café: new Set(["cafe"]),
+			rôle: new Set(["role"]),
+		}
+		const separator: Separator = ",";
+		const thesaurus = getThesaurus(csvContent, separator, mockTranslation, columnNames, true);
+		expect(thesaurus).toEqual(expected);
+	})
+})
