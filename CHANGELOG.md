@@ -1,3 +1,8 @@
+## [0.0.6](https://github.com/Mara-Li/obsidian-my-thesaurus/compare/0.0.5...0.0.6) (2025-02-21)
+### Features
+
+* **standardize:** allow to remove accents when reading the table ([25e7c38](https://github.com/Mara-Li/obsidian-my-thesaurus/commit/25e7c38de2662b5206bafa18dbc522de6c3d5c97))
+
 ## [0.0.5](https://github.com/Mara-Li/obsidian-my-thesaurus/compare/0.0.4...0.0.5) (2025-02-18)
 ### Bug Fixes
 
