@@ -1,5 +1,12 @@
 import i18next from "i18next";
-import {Notice, Plugin, TFile, getFrontMatterInfo, sanitizeHTMLToDom, type FrontMatterCache} from "obsidian";
+import {
+	Notice,
+	Plugin,
+	TFile,
+	getFrontMatterInfo,
+	sanitizeHTMLToDom,
+	type FrontMatterCache,
+} from "obsidian";
 import { resources, translationLanguage } from "./i18n";
 import {
 	DEFAULT_SETTINGS,
@@ -15,18 +22,16 @@ import { getTags, getThesaurus } from "./utils";
 
 export default class MyThesaurus extends Plugin {
 	settings!: MyThesaurusSettings;
-	
+
 	getTagAsArray(tag: string | string[]) {
 		if (!Array.isArray(tag)) return [tag];
 		return tag;
 	}
-	
+
 	getFileTags(frontmatter: FrontMatterCache) {
 		const tags = [];
-		if (frontmatter.tags)
-			tags.push(...this.getTagAsArray(frontmatter.tags));
-		if (frontmatter.tag)
-			tags.push(...this.getTagAsArray(frontmatter.tag));
+		if (frontmatter.tags) tags.push(...this.getTagAsArray(frontmatter.tags));
+		if (frontmatter.tag) tags.push(...this.getTagAsArray(frontmatter.tag));
 		return tags;
 	}
 
@@ -64,7 +69,9 @@ export default class MyThesaurus extends Plugin {
 			};
 		}
 		try {
-			const tags = getTags(contents, thesaurus, this.settings.removeAccents).concat(...getTags(file.basename, thesaurus, this.settings.removeAccents));
+			const tags = getTags(contents, thesaurus, this.settings.removeAccents).concat(
+				...getTags(file.basename, thesaurus, this.settings.removeAccents)
+			);
 			if (tags.length > 0) {
 				await this.addTagsToNote(tags, file);
 				const successMsg = sanitizeHTMLToDom(

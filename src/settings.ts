@@ -30,7 +30,7 @@ export class MyThesaurusSettingTab extends PluginSettingTab {
 
 		containerEl.empty();
 
-				const thesaurusSetting = new Setting(containerEl)
+		const thesaurusSetting = new Setting(containerEl)
 			.setHeading()
 			.setName(i18next.t("settings.thesaurusPath.title"))
 			.setDesc(i18next.t("settings.thesaurusPath.desc"))
@@ -89,7 +89,7 @@ export class MyThesaurusSettingTab extends PluginSettingTab {
 					});
 			});
 		if (this.isInvalid) thesaurusSetting.setClass("is-invalid");
-		
+
 		new Setting(containerEl)
 			.setName(i18next.t("settings.separator.title"))
 			.setDesc(i18next.t("settings.separator.desc"))
@@ -141,23 +141,28 @@ export class MyThesaurusSettingTab extends PluginSettingTab {
 			.addTextArea((text) => {
 				text
 					.setPlaceholder(".*")
-					.setValue(this.settings.includedPaths.join("\n")).onChange(async (value) => {
-					this.settings.includedPaths = value
-						.split(/[\n,;]+/)
-						.map((path) => path.trim())
-						.filter((path) => path.length > 0);
-					await this.plugin.saveSettings();
-				});
+					.setValue(this.settings.includedPaths.join("\n"))
+					.onChange(async (value) => {
+						this.settings.includedPaths = value
+							.split(/[\n,;]+/)
+							.map((path) => path.trim())
+							.filter((path) => path.length > 0);
+						await this.plugin.saveSettings();
+					});
 			});
-		
+
 		new Setting(containerEl)
 			.setName(i18next.t("settings.removeAccents.title"))
-			.setDesc(sanitizeHTMLToDom(`${i18next.t("settings.removeAccents.desc")}<code>"${i18next.t("settings.removeAccents.café")}"</code>${i18next.t("settings.removeAccents.by")}<code>"${i18next.t("settings.removeAccents.cafe")}"</code>${i18next.t("settings.removeAccents.viceversa")}.`))
+			.setDesc(
+				sanitizeHTMLToDom(
+					`${i18next.t("settings.removeAccents.desc")}<code>"${i18next.t("settings.removeAccents.café")}"</code>${i18next.t("settings.removeAccents.by")}<code>"${i18next.t("settings.removeAccents.cafe")}"</code>${i18next.t("settings.removeAccents.viceversa")}.`
+				)
+			)
 			.addToggle((toggle) => {
 				toggle.setValue(this.settings.removeAccents).onChange(async (value) => {
 					this.settings.removeAccents = value;
 					await this.plugin.saveSettings();
-				})
+				});
 			});
 	}
 }

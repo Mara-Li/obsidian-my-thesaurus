@@ -75,8 +75,7 @@ export function getThesaurus(
 		let synonyms = columns[indexSynonyms].trim();
 		if (standardize) synonyms = synonyms.standardize();
 		if (key !== "" && synonyms !== "") {
-			if (thesaurus[key] === undefined)
-				thesaurus[key] = new Set();
+			if (thesaurus[key] === undefined) thesaurus[key] = new Set();
 			thesaurus[key].add(synonyms);
 		}
 	}

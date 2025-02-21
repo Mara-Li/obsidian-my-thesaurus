@@ -1,6 +1,10 @@
 import type { Thesaurus } from "../interfaces";
 
-export function getTags(content: string, thesaurus: Thesaurus, standardize?: boolean): string[] {
+export function getTags(
+	content: string,
+	thesaurus: Thesaurus,
+	standardize?: boolean
+): string[] {
 	const tagsToAdd: string[] = [];
 	if (standardize) content = content.standardize();
 	for (const tags of Object.keys(thesaurus)) {
