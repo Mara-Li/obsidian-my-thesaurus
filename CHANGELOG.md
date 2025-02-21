@@ -1,3 +1,5 @@
+## [0.0.7](https://github.com/Mara-Li/obsidian-my-thesaurus/compare/0.0.6...0.0.7) (2025-02-21)
+
 ## [0.0.6](https://github.com/Mara-Li/obsidian-my-thesaurus/compare/0.0.5...0.0.6) (2025-02-21)
 ### Features
 
