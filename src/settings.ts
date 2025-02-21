@@ -68,7 +68,8 @@ export class MyThesaurusSettingTab extends PluginSettingTab {
 								content,
 								this.settings.separator,
 								i18next.t,
-								this.settings.columns
+								this.settings.columns,
+								this.settings.removeAccents
 							);
 							this.isInvalid = false;
 							this.display();
