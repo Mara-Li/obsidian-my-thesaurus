@@ -2,9 +2,17 @@
 
 Ajoute automatiquement des tags en fonction d’un thésaurus au format CSV ou d'une table Markdown.  
 
-> [!NOTE]
-> Si vous choisissez d'utiliser un fichier Markdown, la table Markdown doit être le seul contenu du fichier.
-> Cependant, vous pouvez avoir un frontmatter au début du fichier.
+Le plugin cherche le mot ou la suite de mots dans l'entête (propriétés), dans le corps et le titre de la note. Le mot recherché le sera :
+- Strictement (sans troncature à droite ou gauche),
+- Insensible à la casse (majuscule ou minuscules)
+- Sensible aux accents (paramétrable)
+
+> [!TIP]
+> `jeu` trouve `JEU` ou `JEu`
+> `jeu de carte` trouve `Jeu De Carte` mais pas `jeux de cartes`
+> `jeu` ne trouvera ni `jeux`, `enjeu` ou `rajeunir`
+> `rôle` ne trouvera pas `role`
+> `role` ne trouvera pas `rôle`
 
 ## 📚 Format du Thésaurus
 
@@ -28,6 +36,9 @@ Le thésaurus doit être un tableau avec deux colonnes : une pour les termes et 
 > | ordinateur | processeur    |
 > ```
 
+> [!NOTE]
+> Si vous choisissez d'utiliser un fichier Markdown, la table Markdown doit être le seul contenu du fichier.
+> Cependant, vous pouvez avoir un entête YAML (propriété) au début du fichier.
 
 ## ⚙️ Paramètres  
 
@@ -35,7 +46,7 @@ Le thésaurus doit être un tableau avec deux colonnes : une pour les termes et 
 2. <ins>Colonne cible</ins> : Le titre de la colonne du fichier CSV contenant les tags :  
     - **Terme** : La colonne contient les tags qui doivent être ajoutés par le plugin.  
     - **Synonymes** : La colonne contient les synonymes qui doivent être reconnus par le plugin.  
-3. <ins>Thésaurus</ins> : Chemin du fichier contenant le thésaurus. Ce fichier doit être un CSV et être stocké dans votre coffre (vault). Vous pouvez cliquer sur le bouton `save` pour vérifier que le fichier est valide (chemin correct, fichier existant et bien formé).  
+3. <ins>Thésaurus</ins> : Chemin du fichier contenant le thésaurus. Ce fichier doit être un CSV et être stocké dans votre coffre (vault). Vous pouvez cliquer sur le bouton `save` pour vérifier que le fichier est valide (chemin correct, fichier existant et bien formé).
 
 > [!WARNING]  
 > Si, pour une raison quelconque, le fichier est déplacé, vous devrez mettre à jour son chemin dans les paramètres ! Il ne sera pas mis à jour automatiquement.  
@@ -44,6 +55,8 @@ Le thésaurus doit être un tableau avec deux colonnes : une pour les termes et 
 
 > [!TIP]  
 > Vous pouvez inclure tous les fichiers de votre coffre en utilisant `.*` comme chemin !  
+
+5. <ins>Supprimer les accents</ins> : Si activé, les accents seront supprimés lors de la recherche de synonymes. Permet de faire reconnaître `rôle` par `role` (et vice-versa)
 
 ## 📝 Utilisation  
 
