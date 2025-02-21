@@ -137,3 +137,13 @@ describe("Unordered columns", () => {
 		});
 	});
 });
+
+describe("not enough columns", () => {
+	const csvContent = "Term\nword1,word2";
+	const separator: Separator = ",";
+	it("should error", () => {
+		expect(() =>
+			getThesaurus(csvContent, separator, mockTranslation, columnNames)
+		).toThrow(mockTranslation("error.csv.malformed"));
+	});
+});
