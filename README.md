@@ -46,11 +46,11 @@ You can have as many synonyms as you want for a term, but you need to duplicate 
 
 ## ⚙️ Settings
 
-1. <ins>Separator</ins>: The separator used in the CSV file. Supported separators are `,`, `;`, `|`, `tabulation` and `markdown`. See the note above for the markdown separator.
-2. <ins>Column title</ins>: The title of the column in the CSV file that contains the tags:
-    - **Term**: The column contains the tags that must be set by the plugin.
-    - **Synonyms**: The column contains the synonyms that must be recognized by the plugin.
-3. <ins>Thesaurus</ins>: Path to the file containing the thesaurus. The file must be a CSV file and must be in your vault. You can click on the `save`button to ensure the file is valid (the path is correct, the file exists, and it's well-formed).
+1. <ins>Thesaurus</ins>: Path to the file containing the thesaurus. The file must be a CSV file and must be in your vault. You can click on the `save` button to ensure the file is valid (the path is correct, the file exists, and it's well-formed).
+2. <ins>Separator</ins>: The separator used in the CSV file. Supported separators are `,`, `;`, `|`, `tabulation` and `markdown`. See the note above for the markdown separator.
+3. <ins>Column title</ins>: The title of the column in the CSV file that contains the tags:
+    - **Term**: Name of the tag column **to be added**
+    - **Synonyms**: Name of the column of **words to be searched in the file** (contents and file title).
 
 > [!CAUTION]  
 > If, for some reason, the file is moved, you need to update the path in the settings! It won't be updated automatically.
@@ -60,7 +60,7 @@ You can have as many synonyms as you want for a term, but you need to duplicate 
 > [!TIP]  
 > You can include all the files in your vault by using `.*` as the path!
 
-5. <ins>Remove accents</ins>: If enabled, accents will be suppressed when searching for synonyms. Allows `role` to be recognized by `role` (and vice versa).
+5. <ins>Remove accents</ins>: If enabled, accents will be suppressed when searching for synonyms. Allows `café` to be recognized by `cafe` (and vice versa).
 
 
 ## 📝 Usage

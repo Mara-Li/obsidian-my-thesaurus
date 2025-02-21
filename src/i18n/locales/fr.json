@@ -32,7 +32,7 @@
 	"settings": {
 		"columns": {
 			"synonyms": {
-				"desc": "Cette valeur est le nom de la colonne des mots à chercher dans le thésaurus.",
+				"desc": "Cette valeur est le nom de la colonne des mots à chercher dans le fichier (contenu et titre).",
 				"title": "Synonymes"
 			},
 			"term": {

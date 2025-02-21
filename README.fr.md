@@ -42,11 +42,11 @@ Le thésaurus doit être un tableau avec deux colonnes : une pour les termes et 
 
 ## ⚙️ Paramètres  
 
-1. <ins>Séparateur</ins> : Le séparateur utilisé dans le fichier CSV. Les séparateurs pris en charge sont `,`, `;`, `|` et `tabulation`.  
-2. <ins>Colonne cible</ins> : Le titre de la colonne du fichier CSV contenant les tags :  
-    - **Terme** : La colonne contient les tags qui doivent être ajoutés par le plugin.  
-    - **Synonymes** : La colonne contient les synonymes qui doivent être reconnus par le plugin.  
-3. <ins>Thésaurus</ins> : Chemin du fichier contenant le thésaurus. Ce fichier doit être un CSV et être stocké dans votre coffre (vault). Vous pouvez cliquer sur le bouton `save` pour vérifier que le fichier est valide (chemin correct, fichier existant et bien formé).
+1. <ins>Thésaurus</ins> : Chemin du fichier contenant le thésaurus. Ce fichier doit être un CSV et être stocké dans votre coffre (vault). Vous pouvez cliquer sur le bouton `save` pour vérifier que le fichier est valide (chemin correct, fichier existant et bien formé).
+2. <ins>Séparateur</ins> : Le séparateur utilisé dans le fichier CSV. Les séparateurs pris en charge sont `,`, `;`, `|` et `tabulation`.  
+3. <ins>Colonne cible</ins> : Le titre de la colonne du fichier CSV contenant les tags :  
+    - **Terme** : Nom de la colonne contenant les **tags à ajouter**.
+    - **Synonymes** : Nom de la colonne des mots à **rechercher** dans le fichier (contenu et titre).
 
 > [!WARNING]  
 > Si, pour une raison quelconque, le fichier est déplacé, vous devrez mettre à jour son chemin dans les paramètres ! Il ne sera pas mis à jour automatiquement.  
@@ -54,9 +54,9 @@ Le thésaurus doit être un tableau avec deux colonnes : une pour les termes et 
 4. <ins>Chemins inclus</ins> : Les fichiers situés dans ces dossiers seront pris en compte lors de l'exécution de la commande `My Thesaurus: Analyser tous les fichiers`. Vous pouvez séparer les chemins par une virgule, un point-virgule ou un saut de ligne. De plus, les expressions régulières (regex) sont prises en charge.  
 
 > [!TIP]  
-> Vous pouvez inclure tous les fichiers de votre coffre en utilisant `.*` comme chemin !  
+> Vous pouvez inclure tous les fichiers de votre coffre en utilisant `.*` comme chemin ! Cette valeur est utilisés par défaut.
 
-5. <ins>Supprimer les accents</ins> : Si activé, les accents seront supprimés lors de la recherche de synonymes. Permet de faire reconnaître `rôle` par `role` (et vice-versa)
+5. <ins>Supprimer les accents</ins> : Si activé, les accents seront supprimés lors de la reconnaissance de synonymes. Permet de faire correspondre `rôle` à `role` (et vice-versa).
 
 ## 📝 Utilisation  
 
