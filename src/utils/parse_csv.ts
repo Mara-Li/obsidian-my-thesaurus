@@ -1,11 +1,17 @@
 import type { ColumnName, Separator, Thesaurus, Translation } from "../interfaces";
 
+const separatorRegex = /[,;\t\|]/;
+
 function verifySeparator(header: string, sep: Separator): boolean {
 	return header.includes(sep);
 }
 
 function searchSeparator(header: string): Separator {
-	return header.match(/[,;\t\|]/)?.[0] as Separator;
+	return header.match(separatorRegex)?.[0] as Separator;
+}
+
+function countColumn(header: string) {
+	return header.split(separatorRegex).length;
 }
 
 export function getColumn(
@@ -43,10 +49,11 @@ export function getThesaurus(
 	const isMd = separator === "md";
 	separator = isMd ? "|" : separator;
 	const lines = fileContent.split("\n");
+	if (countColumn(lines[0]) <= 1) throw new Error(ln("error.csv.malformed"));
 	if (!verifySeparator(lines[0], separator))
 		throw new Error(ln("error.csv.separator", { sep: searchSeparator(lines[0]) }));
-
 	const header = getHeader(lines, separator);
+	if (header.length <= 1) throw new Error(ln("error.csv.malformed"));
 	const { indexKey, indexSynonyms } = getColumn(header, columnNames, ln);
 	const thesaurus: Thesaurus = {};
 	const lineSlice = isMd ? 2 : 1;
