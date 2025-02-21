@@ -48,7 +48,8 @@ export function getThesaurus(
 	fileContent: string,
 	separator: Separator,
 	ln: Translation,
-	columnNames: ColumnName
+	columnNames: ColumnName,
+	standardize?: boolean
 ) {
 	//verify if they are only two columns
 	const isMd = separator === "md";
@@ -71,14 +72,12 @@ export function getThesaurus(
 			throw new Error(ln("error.csv.malformed", { len: columns.length }));
 
 		const key = columns[indexKey].trim();
-		const synonyms = columns[indexSynonyms].trim();
+		let synonyms = columns[indexSynonyms].trim();
+		if (standardize) synonyms = synonyms.standardize();
 		if (key !== "" && synonyms !== "") {
-			if (thesaurus[key] === undefined) {
+			if (thesaurus[key] === undefined)
 				thesaurus[key] = new Set();
-				thesaurus[key].add(synonyms);
-			} else {
-				thesaurus[key].add(synonyms);
-			}
+			thesaurus[key].add(synonyms);
 		}
 	}
 	return thesaurus;

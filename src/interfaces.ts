@@ -5,6 +5,7 @@ export interface MyThesaurusSettings {
 	includedPaths: string[];
 	separator: Separator;
 	columns: ColumnName;
+	removeAccents: boolean;
 }
 
 export type ColumnName = {
@@ -28,10 +29,11 @@ export type Translation = TFunction<"translation", undefined>;
 
 export const DEFAULT_SETTINGS: MyThesaurusSettings = {
 	thesaurusPath: "",
-	includedPaths: [],
+	includedPaths: [".*"],
 	separator: ";",
 	columns: {
 		term: "term",
 		synonyms: "synonyms",
 	},
+	removeAccents: false,
 };

@@ -32,11 +32,11 @@
   "settings": {
     "columns": {
       "synonyms": {
-        "desc": "Ces valeurs seront reconnus dans le contenu du fichier et le terme correspondant sera appliqué.",
+        "desc": "Cette valeur est le nom de la colonne des mots à chercher dans le thésaurus.",
         "title": "Synonymes"
       },
       "term": {
-        "desc": "Cette valeur sera ajouté comme tag dans vos propriétés.",
+        "desc": "Cette valeur est le nom de la colonne des tags à ajouter.",
         "title": "Terme"
       },
       "title": "Colonne cible"
@@ -46,6 +46,14 @@
       "regex": "Les expressions régulières sont supportées.",
       "separate": "Séparer les chemins par une virgule, point virgule ou un retour à la ligne.",
       "title": "Chemins inclus"
+    },
+    "removeAccents": {
+      "by": "comme",
+      "cafe": "cafe",
+      "café": "café",
+      "desc": "Ignore les accents lors de la reconnaissance : permet d'identifier",
+      "title": "Supprimer les accents",
+      "viceversa": "(et inversement)"
     },
     "separator": {
       "desc": "Séparateur des colonnes du fichier CSV.",

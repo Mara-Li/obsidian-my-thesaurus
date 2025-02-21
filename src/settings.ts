@@ -30,47 +30,7 @@ export class MyThesaurusSettingTab extends PluginSettingTab {
 
 		containerEl.empty();
 
-		new Setting(containerEl)
-			.setName(i18next.t("settings.separator.title"))
-			.setDesc(i18next.t("settings.separator.desc"))
-			.addDropdown((dropdown) => {
-				dropdown
-					.addOption(";", ";")
-					.addOption(",", ",")
-					.addOption("\t", `${i18next.t("settings.separator.tab")}`)
-					.addOption("|", "|")
-					.addOption("md", `${i18next.t("settings.separator.md")}`)
-					.setValue(this.settings.separator)
-					.onChange(async (value) => {
-						this.settings.separator = value as Separator;
-						await this.plugin.saveSettings();
-						this.display();
-					});
-			});
-
-		new Setting(containerEl).setName(i18next.t("settings.columns.title")).setHeading();
-
-		new Setting(containerEl)
-			.setName(i18next.t("settings.columns.term.title"))
-			.setDesc(i18next.t("settings.columns.term.desc"))
-			.addText((text) => {
-				text.setValue(this.settings.columns.term).onChange(async (value) => {
-					this.settings.columns.term = value;
-					await this.plugin.saveSettings();
-				});
-			});
-
-		new Setting(containerEl)
-			.setName(i18next.t("settings.columns.synonyms.title"))
-			.setDesc(i18next.t("settings.columns.synonyms.desc"))
-			.addText((text) => {
-				text.setValue(this.settings.columns.synonyms).onChange(async (value) => {
-					this.settings.columns.synonyms = value;
-					await this.plugin.saveSettings();
-				});
-			});
-
-		const thesaurusSetting = new Setting(containerEl)
+				const thesaurusSetting = new Setting(containerEl)
 			.setHeading()
 			.setName(i18next.t("settings.thesaurusPath.title"))
 			.setDesc(i18next.t("settings.thesaurusPath.desc"))
@@ -128,6 +88,46 @@ export class MyThesaurusSettingTab extends PluginSettingTab {
 					});
 			});
 		if (this.isInvalid) thesaurusSetting.setClass("is-invalid");
+		
+		new Setting(containerEl)
+			.setName(i18next.t("settings.separator.title"))
+			.setDesc(i18next.t("settings.separator.desc"))
+			.addDropdown((dropdown) => {
+				dropdown
+					.addOption(";", ";")
+					.addOption(",", ",")
+					.addOption("\t", `${i18next.t("settings.separator.tab")}`)
+					.addOption("|", "|")
+					.addOption("md", `${i18next.t("settings.separator.md")}`)
+					.setValue(this.settings.separator)
+					.onChange(async (value) => {
+						this.settings.separator = value as Separator;
+						await this.plugin.saveSettings();
+						this.display();
+					});
+			});
+
+		new Setting(containerEl).setName(i18next.t("settings.columns.title")).setHeading();
+
+		new Setting(containerEl)
+			.setName(i18next.t("settings.columns.term.title"))
+			.setDesc(i18next.t("settings.columns.term.desc"))
+			.addText((text) => {
+				text.setValue(this.settings.columns.term).onChange(async (value) => {
+					this.settings.columns.term = value;
+					await this.plugin.saveSettings();
+				});
+			});
+
+		new Setting(containerEl)
+			.setName(i18next.t("settings.columns.synonyms.title"))
+			.setDesc(i18next.t("settings.columns.synonyms.desc"))
+			.addText((text) => {
+				text.setValue(this.settings.columns.synonyms).onChange(async (value) => {
+					this.settings.columns.synonyms = value;
+					await this.plugin.saveSettings();
+				});
+			});
 
 		new Setting(containerEl)
 			.setName(i18next.t("settings.includedPaths.title"))
@@ -138,13 +138,25 @@ export class MyThesaurusSettingTab extends PluginSettingTab {
 				)
 			)
 			.addTextArea((text) => {
-				text.setValue(this.settings.includedPaths.join("\n")).onChange(async (value) => {
+				text
+					.setPlaceholder(".*")
+					.setValue(this.settings.includedPaths.join("\n")).onChange(async (value) => {
 					this.settings.includedPaths = value
 						.split(/[\n,;]+/)
 						.map((path) => path.trim())
 						.filter((path) => path.length > 0);
 					await this.plugin.saveSettings();
 				});
+			});
+		
+		new Setting(containerEl)
+			.setName(i18next.t("settings.removeAccents.title"))
+			.setDesc(sanitizeHTMLToDom(`${i18next.t("settings.removeAccents.desc")}<code>"${i18next.t("settings.removeAccents.café")}"</code>${i18next.t("settings.removeAccents.by")}<code>"${i18next.t("settings.removeAccents.cafe")}"</code>${i18next.t("settings.removeAccents.viceversa")}.`))
+			.addToggle((toggle) => {
+				toggle.setValue(this.settings.removeAccents).onChange(async (value) => {
+					this.settings.removeAccents = value;
+					await this.plugin.saveSettings();
+				})
 			});
 	}
 }

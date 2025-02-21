@@ -64,7 +64,7 @@ export default class MyThesaurus extends Plugin {
 			};
 		}
 		try {
-			const tags = getTags(contents, thesaurus);
+			const tags = getTags(contents, thesaurus, this.settings.removeAccents).concat(...getTags(file.basename, thesaurus, this.settings.removeAccents));
 			if (tags.length > 0) {
 				await this.addTagsToNote(tags, file);
 				const successMsg = sanitizeHTMLToDom(
@@ -160,7 +160,8 @@ export default class MyThesaurus extends Plugin {
 			await this.readThesaurus(),
 			this.settings.separator,
 			i18next.t,
-			this.settings.columns
+			this.settings.columns,
+			this.settings.removeAccents
 		);
 		const results: ParseResults = [];
 		const noticeBar = new Notice(
@@ -216,7 +217,8 @@ export default class MyThesaurus extends Plugin {
 									thesaurusContent,
 									this.settings.separator,
 									i18next.t,
-									this.settings.columns
+									this.settings.columns,
+									this.settings.removeAccents
 								);
 								this.parseFile(file, false, thesaurus);
 							});
