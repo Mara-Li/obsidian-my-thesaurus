@@ -18,7 +18,7 @@ The plugin searches for the word or series of words in the header (properties), 
 
 ## 📚 Thesaurus Format
 
-The thesaurus must be a table with two columns: one for the terms and one for the synonyms. The first row must contain the column headers.
+The thesaurus must be a table with at last two columns: one for the terms and one for the synonyms. The first row must contain the column headers.
 
 > [!TIP]  
 > The thesaurus can be a CSV file like this:

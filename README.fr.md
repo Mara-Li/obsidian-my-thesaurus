@@ -16,7 +16,7 @@ Le plugin cherche le mot ou la suite de mots dans l'entête (propriétés), dans
 
 ## 📚 Format du Thésaurus
 
-Le thésaurus doit être un tableau avec deux colonnes : une pour les termes et une pour les synonymes. La première ligne doit contenir les en-têtes de colonnes.
+Le thésaurus doit être un tableau avec au moins deux colonnes : une pour les termes et une pour les synonymes. La première ligne doit contenir les en-têtes de colonnes.
 
 > [!TIP]  
 > Le thésaurus peut être un fichier CSV comme ceci :  
