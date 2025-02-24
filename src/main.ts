@@ -54,7 +54,10 @@ export default class MyThesaurus extends Plugin {
 		frontmatter: FrontMatterCache
 	): Promise<boolean> {
 		if (areArraysEqual(tags, currentTags)) return false;
-		const newTags = this.filterTerm(frontmatter, new Set([...currentTags, ...tags]));
+		const updatedTags = new Set([...currentTags, ...tags]);
+		let newTags = [...updatedTags];
+		if (this.settings.cleanExcludedTerms)
+			newTags = this.filterTerm(frontmatter, updatedTags);
 		if (newTags.length === 0) return false;
 		await this.app.fileManager.processFrontMatter(file, (frontmatter) => {
 			if (frontmatter.tag) frontmatter.tag = newTags;

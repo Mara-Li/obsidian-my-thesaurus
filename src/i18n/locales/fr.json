@@ -41,9 +41,14 @@
       },
       "title": "Colonne cible"
     },
-    "excludeTermKey": {
-      "desc": "Cette clé sera reconnue dans vos propriétés et permettra d'empêcher l'ajout des tags listés.",
-      "title": "Clé de propriétés : Exclure des termes"
+    "exclude": {
+      "clean": {
+        "desc": "Supprime automatiquement les tags déjà existant si un terme est exclu.",
+        "title": "Auto-nettoyage"
+      },
+      "desc": "Permet d'exclure des termes en utilisant une clé de propriétés",
+      "key": "Clé de propriétés",
+      "title": "Exclure des termes"
     },
     "includedPaths": {
       "desc": "Inclus les fichiers depuis ses chemins lors d'utilisation de la commande globale.",

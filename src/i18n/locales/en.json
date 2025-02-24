@@ -41,9 +41,14 @@
       },
       "title": "Column title"
     },
-    "excludeTermKey": {
-      "desc": "This key will be recognized in your properties and will prevent the tags listed from being added.",
-      "title": "Frontmatter key : exclude term"
+    "exclude": {
+      "clean": {
+        "desc": "Automatically deletes existing tags if a term is excluded.",
+        "title": "Auto-clean"
+      },
+      "desc": "Allow to exclude term using a property key.",
+      "key": "Frontmatter key",
+      "title": "Excluding terms"
     },
     "includedPaths": {
       "desc": "Includes files from its paths when using the global command.",

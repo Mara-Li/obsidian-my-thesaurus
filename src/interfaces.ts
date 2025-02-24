@@ -7,6 +7,7 @@ export interface MyThesaurusSettings {
 	columns: ColumnName;
 	removeAccents: boolean;
 	excludeTermKey: string;
+	cleanExcludedTerms: boolean;
 }
 
 export type ColumnName = {
@@ -38,4 +39,5 @@ export const DEFAULT_SETTINGS: MyThesaurusSettings = {
 	},
 	removeAccents: false,
 	excludeTermKey: "exclude_term",
+	cleanExcludedTerms: false,
 };
