@@ -18,21 +18,32 @@ import {
 import { MyThesaurusSettingTab } from "./settings";
 import "uniformize";
 import { ResultModals } from "./modals";
-import { areArraysEqual, findMissingElements, getTags, getThesaurus } from "./utils";
+import {
+	areArraysEqual,
+	findMissingElements,
+	getKeysAsArray,
+	getTags,
+	getThesaurus,
+} from "./utils";
 
 export default class MyThesaurus extends Plugin {
 	settings!: MyThesaurusSettings;
 
-	getTagAsArray(tag: string | string[]) {
-		if (!Array.isArray(tag)) return [tag];
-		return tag;
-	}
-
 	getFileTags(frontmatter: FrontMatterCache) {
 		const tags = [];
-		if (frontmatter.tags) tags.push(...this.getTagAsArray(frontmatter.tags));
-		if (frontmatter.tag) tags.push(...this.getTagAsArray(frontmatter.tag));
-		return tags;
+		if (frontmatter.tags) tags.push(...getKeysAsArray(frontmatter.tags));
+		if (frontmatter.tag) tags.push(...getKeysAsArray(frontmatter.tag));
+		return this.filterTerm(frontmatter, new Set(tags));
+	}
+
+	filterTerm(frontmatter: FrontMatterCache, tags: Set<string>) {
+		const keyToFind = this.settings.excludeTermKey;
+		if (keyToFind.trim().length === 0) return [...tags];
+		if (frontmatter[keyToFind]) {
+			const excludeList = getKeysAsArray(frontmatter[keyToFind]);
+			for (const tag of excludeList) tags.delete(tag);
+		}
+		return [...tags];
 	}
 
 	async addTagsToNote(

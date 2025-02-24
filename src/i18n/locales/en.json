@@ -41,12 +41,17 @@
       },
       "title": "Column title"
     },
+    "excludeTermKey": {
+      "desc": "This key will be recognized in your properties and will prevent the tags listed from being added.",
+      "title": "Frontmatter key : exclude term"
+    },
     "includedPaths": {
       "desc": "Includes files from its paths when using the global command.",
       "regex": "Regex are supported.",
       "separate": "Separate paths with coma, semicolon, spaces or newlines.",
       "title": "Included paths"
     },
+    "other": "Other settings",
     "removeAccents": {
       "by": "like",
       "cafe": "cafe",

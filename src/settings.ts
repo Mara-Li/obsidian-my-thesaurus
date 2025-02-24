@@ -151,6 +151,8 @@ export class MyThesaurusSettingTab extends PluginSettingTab {
 					});
 			});
 
+		new Setting(containerEl).setHeading().setName(i18next.t("settings.other"));
+
 		new Setting(containerEl)
 			.setName(i18next.t("settings.removeAccents.title"))
 			.setDesc(
@@ -161,6 +163,16 @@ export class MyThesaurusSettingTab extends PluginSettingTab {
 			.addToggle((toggle) => {
 				toggle.setValue(this.settings.removeAccents).onChange(async (value) => {
 					this.settings.removeAccents = value;
+					await this.plugin.saveSettings();
+				});
+			});
+
+		new Setting(containerEl)
+			.setName(i18next.t("settings.excludeTermKey.title"))
+			.setDesc(i18next.t("settings.excludeTermKey.desc"))
+			.addText((text) => {
+				text.setValue(this.settings.excludeTermKey).onChange(async (value) => {
+					this.settings.excludeTermKey = value;
 					await this.plugin.saveSettings();
 				});
 			});

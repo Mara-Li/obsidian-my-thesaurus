@@ -41,12 +41,17 @@
       },
       "title": "Colonne cible"
     },
+    "excludeTermKey": {
+      "desc": "Cette clé sera reconnue dans vos propriétés et permettra d'empêcher l'ajout des tags listés.",
+      "title": "Clé de propriétés : Exclure des termes"
+    },
     "includedPaths": {
       "desc": "Inclus les fichiers depuis ses chemins lors d'utilisation de la commande globale.",
       "regex": "Les expressions régulières sont supportées.",
       "separate": "Séparer les chemins par une virgule, point virgule ou un retour à la ligne.",
       "title": "Chemins inclus"
     },
+    "other": "Autres paramètres",
     "removeAccents": {
       "by": "comme",
       "cafe": "cafe",
