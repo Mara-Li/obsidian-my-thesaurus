@@ -1,6 +1,6 @@
 {
 	"name": "my-thesaurus",
-	"version": "0.0.8",
+	"version": "0.0.9",
 	"description": "Add automagically tags based on a thesaurus (CSV or markdown table).",
 	"main": "main.js",
 	"private": true,
@@ -10,8 +10,8 @@
 		"dev:prod": "node esbuild.config.mjs --vault",
 		"dev": "node esbuild.config.mjs",
 		"export": "node esbuild.config.mjs --production --vault",
-		"bump": "dotenv -- node commit-and-tag-version.mjs",
-		"postbump": "dotenv -- if-env SKIP_POST_BUMP=true && echo skip bump || git push --follow-tags origin master",
+		"bump": "node commit-and-tag-version.mjs",
+		"postbump": "git push --follow-tags origin master",
 		"predeploy": "bun run bump",
 		"deploy": "pnpm run export",
 		"lint": "pnpm biome format --write src/"

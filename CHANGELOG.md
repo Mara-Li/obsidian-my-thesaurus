@@ -1,3 +1,8 @@
+## [0.0.9](https://github.com/Mara-Li/obsidian-my-thesaurus/compare/0.0.8...0.0.9) (2025-02-24)
+### Features
+
+* **settings:** add excludeTermKey setting to filter tags in frontmatter ([04d4010](https://github.com/Mara-Li/obsidian-my-thesaurus/commit/04d40100e56ca4c3eccb4b3153c2f48424b72cf0))
+
 ## [0.0.8](https://github.com/Mara-Li/obsidian-my-thesaurus/compare/0.0.7...0.0.8) (2025-02-21)
 ### Features
 
