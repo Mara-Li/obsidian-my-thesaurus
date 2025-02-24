@@ -33,13 +33,14 @@ export default class MyThesaurus extends Plugin {
 		const tags = [];
 		if (frontmatter.tags) tags.push(...getKeysAsArray(frontmatter.tags));
 		if (frontmatter.tag) tags.push(...getKeysAsArray(frontmatter.tag));
-		return this.filterTerm(frontmatter, new Set(tags));
+		return tags;
 	}
 
 	filterTerm(frontmatter: FrontMatterCache, tags: Set<string>) {
 		const keyToFind = this.settings.excludeTermKey;
 		if (keyToFind.trim().length === 0) return [...tags];
-		if (frontmatter[keyToFind]) {
+		if (frontmatter?.[keyToFind]) {
+			console.log(frontmatter[keyToFind]);
 			const excludeList = getKeysAsArray(frontmatter[keyToFind]);
 			for (const tag of excludeList) tags.delete(tag);
 		}
@@ -49,10 +50,11 @@ export default class MyThesaurus extends Plugin {
 	async addTagsToNote(
 		tags: string[],
 		file: TFile,
-		currentTags: string[]
+		currentTags: string[],
+		frontmatter: FrontMatterCache
 	): Promise<boolean> {
 		if (areArraysEqual(tags, currentTags)) return false;
-		const newTags = [...new Set([...currentTags, ...tags])];
+		const newTags = this.filterTerm(frontmatter, new Set([...currentTags, ...tags]));
 		if (newTags.length === 0) return false;
 		await this.app.fileManager.processFrontMatter(file, (frontmatter) => {
 			if (frontmatter.tag) frontmatter.tag = newTags;
@@ -91,22 +93,25 @@ export default class MyThesaurus extends Plugin {
 			};
 		}
 		try {
+			const frontmatter = this.app.metadataCache.getFileCache(file)?.frontmatter || {};
 			const tags = getTags(contents, thesaurus, this.settings.removeAccents).concat(
 				...getTags(file.basename, thesaurus, this.settings.removeAccents)
 			);
-			if (tags.length > 0) {
-				const frontmatter = this.app.metadataCache.getFileCache(file)?.frontmatter || {};
+			const tagsToAdd = this.filterTerm(frontmatter, new Set(tags));
+
+			if (tagsToAdd.length > 0) {
 				const currentTags = this.getFileTags(frontmatter);
-				const added = await this.addTagsToNote(tags, file, currentTags);
+				const added = await this.addTagsToNote(tagsToAdd, file, currentTags, frontmatter);
 				if (added) {
-					const missingTags = findMissingElements(currentTags, tags);
+					const missingTags = findMissingElements(currentTags, tagsToAdd);
+					if (missingTags.length === 0) return this.skip(file, silent);
 					const successMsg = sanitizeHTMLToDom(
 						`<span class="success">${i18next.t("success.title")}</span>${missingTags.map((tag) => `<li><code>${tag}</code></li>`).join("")}`
 					);
 					this.notice(successMsg, silent);
 					return {
 						file: file.basename,
-						tags: tags,
+						tags: tagsToAdd,
 						type: "success",
 					};
 				} else return this.skip(file, silent);
