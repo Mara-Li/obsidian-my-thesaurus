@@ -62,3 +62,16 @@
 	border-color: var(--text-error);
 	box-shadow: none;
 }
+
+.my-thesaurus .no-border {
+	border: none;
+}
+
+.my-thesaurus .setting-item-heading {
+	--font-ui-medium: 1.25rem;
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.my-thesaurus .border-top {
+	border-top: 1px solid var(--background-modifier-border);
+}

@@ -6,6 +6,8 @@ export interface MyThesaurusSettings {
 	separator: Separator;
 	columns: ColumnName;
 	removeAccents: boolean;
+	excludeTermKey: string;
+	cleanExcludedTerms: boolean;
 }
 
 export type ColumnName = {
@@ -36,4 +38,6 @@ export const DEFAULT_SETTINGS: MyThesaurusSettings = {
 		synonyms: "synonyms",
 	},
 	removeAccents: false,
+	excludeTermKey: "exclude_term",
+	cleanExcludedTerms: false,
 };

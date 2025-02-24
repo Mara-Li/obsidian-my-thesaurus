@@ -93,6 +93,7 @@ export class MyThesaurusSettingTab extends PluginSettingTab {
 		new Setting(containerEl)
 			.setName(i18next.t("settings.separator.title"))
 			.setDesc(i18next.t("settings.separator.desc"))
+			.setClass("no-border")
 			.addDropdown((dropdown) => {
 				dropdown
 					.addOption(";", ";")
@@ -112,6 +113,7 @@ export class MyThesaurusSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName(i18next.t("settings.columns.term.title"))
+			.setClass("no-border")
 			.setDesc(i18next.t("settings.columns.term.desc"))
 			.addText((text) => {
 				text.setValue(this.settings.columns.term).onChange(async (value) => {
@@ -121,6 +123,7 @@ export class MyThesaurusSettingTab extends PluginSettingTab {
 			});
 
 		new Setting(containerEl)
+			.setClass("no-border")
 			.setName(i18next.t("settings.columns.synonyms.title"))
 			.setDesc(i18next.t("settings.columns.synonyms.desc"))
 			.addText((text) => {
@@ -133,6 +136,7 @@ export class MyThesaurusSettingTab extends PluginSettingTab {
 		new Setting(containerEl)
 			.setName(i18next.t("settings.includedPaths.title"))
 			.setHeading()
+			.setClass("border-top")
 			.setDesc(
 				sanitizeHTMLToDom(
 					`${i18next.t("settings.includedPaths.desc")}<br>${i18next.t("settings.includedPaths.separate")}<br>${i18next.t("settings.includedPaths.regex")}`
@@ -152,7 +156,34 @@ export class MyThesaurusSettingTab extends PluginSettingTab {
 			});
 
 		new Setting(containerEl)
+			.setName(i18next.t("settings.exclude.title"))
+			.setHeading()
+			.setDesc(i18next.t("settings.exclude.desc"));
+		new Setting(containerEl)
+			.setName(i18next.t("settings.exclude.key"))
+			.setClass("no-border")
+			.addText((text) => {
+				text.setValue(this.settings.excludeTermKey).onChange(async (value) => {
+					this.settings.excludeTermKey = value;
+					await this.plugin.saveSettings();
+				});
+			});
+		new Setting(containerEl)
+			.setName(i18next.t("settings.exclude.clean.title"))
+			.setDesc(i18next.t("settings.exclude.clean.desc"))
+			.setClass("no-border")
+			.addToggle((toggle) => {
+				toggle.setValue(this.settings.cleanExcludedTerms).onChange(async (value) => {
+					this.settings.cleanExcludedTerms = value;
+					await this.plugin.saveSettings();
+				});
+			});
+
+		new Setting(containerEl).setHeading().setName(i18next.t("settings.other"));
+
+		new Setting(containerEl)
 			.setName(i18next.t("settings.removeAccents.title"))
+			.setClass("no-border")
 			.setDesc(
 				sanitizeHTMLToDom(
 					`${i18next.t("settings.removeAccents.desc")}<code>"${i18next.t("settings.removeAccents.café")}"</code>${i18next.t("settings.removeAccents.by")}<code>"${i18next.t("settings.removeAccents.cafe")}"</code>${i18next.t("settings.removeAccents.viceversa")}.`

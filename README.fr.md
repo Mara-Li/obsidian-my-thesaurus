@@ -43,20 +43,22 @@ Le thésaurus doit être un tableau avec au moins deux colonnes : une pour les t
 ## ⚙️ Paramètres  
 
 1. <ins>Thésaurus</ins> : Chemin du fichier contenant le thésaurus. Ce fichier doit être un CSV et être stocké dans votre coffre (vault). Vous pouvez cliquer sur le bouton `save` pour vérifier que le fichier est valide (chemin correct, fichier existant et bien formé).
-2. <ins>Séparateur</ins> : Le séparateur utilisé dans le fichier CSV. Les séparateurs pris en charge sont `,`, `;`, `|` et `tabulation`.  
-3. <ins>Colonne cible</ins> : Le titre de la colonne du fichier CSV contenant les tags :  
-    - **Terme** : Nom de la colonne contenant les **tags à ajouter**.
-    - **Synonymes** : Nom de la colonne des mots à **rechercher** dans le fichier (contenu et titre).
 
 > [!WARNING]  
 > Si, pour une raison quelconque, le fichier est déplacé, vous devrez mettre à jour son chemin dans les paramètres ! Il ne sera pas mis à jour automatiquement.  
 
+2. <ins>Séparateur</ins> : Le séparateur utilisé dans le fichier CSV. Les séparateurs pris en charge sont `,`, `;`, `|` et `tabulation`.  
+3. <ins>Colonne cible</ins> : Le titre de la colonne du fichier CSV contenant les tags :  
+    - **Terme** : Nom de la colonne contenant les **tags à ajouter**.
+    - **Synonymes** : Nom de la colonne des mots à **rechercher** dans le fichier (contenu et titre).
 4. <ins>Chemins inclus</ins> : Les fichiers situés dans ces dossiers seront pris en compte lors de l'exécution de la commande `My Thesaurus: Analyser tous les fichiers`. Vous pouvez séparer les chemins par une virgule, un point-virgule ou un saut de ligne. De plus, les expressions régulières (regex) sont prises en charge.  
 
 > [!TIP]  
 > Vous pouvez inclure tous les fichiers de votre coffre en utilisant `.*` comme chemin ! Cette valeur est utilisés par défaut.
-
-5. <ins>Supprimer les accents</ins> : Si activé, les accents seront supprimés lors de la reconnaissance de synonymes. Permet de faire correspondre `rôle` à `role` (et vice-versa).
+5. <ins>Exclure des termes</ins> : Permet d'exclure des termes en utilisant une clé de propriété.
+    - **Clé de propriété** : La clé à rechercher dans les propriétés, par défaut `exclude_term`.
+    - **Auto-nettoyage** : Si activé, le plugin nettoiera les tags déjà existants en supprimant les termes exclus.
+6. <ins>Supprimer les accents</ins> : Si activé, les accents seront supprimés lors de la reconnaissance de synonymes. Permet de faire correspondre `rôle` à `role` (et vice-versa).
 
 ## 📝 Utilisation  
 

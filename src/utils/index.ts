@@ -13,3 +13,8 @@ export function findMissingElements<T>(currentTags: T[], tags: T[]): T[] {
 	const currentSet = new Set(currentTags);
 	return tags.filter((tag) => !currentSet.has(tag));
 }
+
+export function getKeysAsArray(tag: string | string[]) {
+	if (!Array.isArray(tag)) return [tag];
+	return tag;
+}

@@ -41,12 +41,22 @@
       },
       "title": "Column title"
     },
+    "exclude": {
+      "clean": {
+        "desc": "Automatically deletes existing tags if a term is excluded.",
+        "title": "Auto-clean"
+      },
+      "desc": "Allow to exclude term using a property key.",
+      "key": "Frontmatter key",
+      "title": "Excluding terms"
+    },
     "includedPaths": {
       "desc": "Includes files from its paths when using the global command.",
       "regex": "Regex are supported.",
       "separate": "Separate paths with coma, semicolon, spaces or newlines.",
       "title": "Included paths"
     },
+    "other": "Other settings",
     "removeAccents": {
       "by": "like",
       "cafe": "cafe",
