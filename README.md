@@ -9,11 +9,11 @@ The plugin searches for the word or series of words in the header (properties), 
 - Accent-sensitive (configurable)
 
 > [!TIP]
-> `game` finds `GAME` or `GamE`.
-> `card game` finds `Card Game` but not `cards games` 
-> `game` won't find `games`, `gaming` or `gameplay` 
-> `cafe` will not find `café`.
-> `café` will not find `cafe`.
+> - `game` finds `GAME` or `GamE`.
+> - `card game` finds `Card Game` but not `cards games` 
+> - `game` won't find `games`, `gaming` or `gameplay` 
+> - `cafe` will not find `café`.
+> - `café` will not find `cafe`.
 
 
 ## 📚 Thesaurus Format
