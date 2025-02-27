@@ -1,87 +1,87 @@
 {
-  "command": {
-    "active": "Add thesaurus tags to active file",
-    "all": "Parse all"
-  },
-  "error": {
-    "csv": {
-      "columns": "The columns doesn't correspond with the settings.",
-      "header": "You can have only two column in your thesaurus. You have: {{- len}} columns.",
-      "malformed": "Your CSV is malformed: there is no column.",
-      "separator": "The specified separator is invalid. You seems to use \"{{- sep}}\" as separator."
-    },
-    "file": {
-      "empty": "The file {{- file}} is empty!"
-    },
-    "noFiles": "No files to parse found!",
-    "noPath": "The path to the thesaurus is empty!",
-    "noPaths": "No file paths have been included in the parameters.",
-    "notFound": "The thesaurus is not found at the provided path ({{- path}})."
-  },
-  "modal": {
-    "errors": "Errors",
-    "skips": "Skipped",
-    "success": "Success",
-    "title": "MyThesaurus - Results"
-  },
-  "notice": {
-    "done": "Done !",
-    "loading": "Loading...",
-    "start": "Start treatment..."
-  },
-  "settings": {
-    "columns": {
-      "synonyms": {
-        "desc": "This value is the name of the column of words to be searched in the file (contents and title).",
-        "title": "Synonym"
-      },
-      "term": {
-        "desc": "This value is the name of the tag column to be added.",
-        "title": "Term"
-      },
-      "title": "Column title"
-    },
-    "exclude": {
-      "clean": {
-        "desc": "Automatically deletes existing tags if a term is excluded.",
-        "title": "Auto-clean"
-      },
-      "desc": "Allow to exclude term using a property key.",
-      "key": "Frontmatter key",
-      "title": "Excluding terms"
-    },
-    "includedPaths": {
-      "desc": "Includes files from its paths when using the global command.",
-      "regex": "Regex are supported.",
-      "separate": "Separate paths with coma, semicolon, spaces or newlines.",
-      "title": "Included paths"
-    },
-    "other": "Other settings",
-    "removeAccents": {
-      "by": "like",
-      "cafe": "cafe",
-      "café": "café",
-      "desc": "Ignores accents during recognition: helps identify",
-      "title": "Remove accents",
-      "viceversa": "(and vice versa)"
-    },
-    "separator": {
-      "desc": "CSV column separator.",
-      "md": "Markdown table",
-      "tab": "Tabulation",
-      "title": "Separator"
-    },
-    "thesaurusPath": {
-      "desc": "Path to your CSV thesaurus (in your vault).",
-      "error": "The provided file is not valide.",
-      "placeholder": "mon_thesaurus.csv",
-      "success": "The provided file is correct!",
-      "title": "Thesaurus",
-      "verify": "Verify validity of the file"
-    }
-  },
-  "success": {
-    "none": "No tag to add!",
-    "title": "The tags has been added:"
-  }
+	"command": {
+		"active": "Add thesaurus tags to active file",
+		"all": "Parse all"
+	},
+	"error": {
+		"csv": {
+			"columns": "The columns doesn't correspond with the settings.",
+			"header": "You can have only two column in your thesaurus. You have: {{- len}} columns.",
+			"malformed": "Your CSV is malformed: there is no column.",
+			"separator": "The specified separator is invalid. You seems to use \"{{- sep}}\" as separator."
+		},
+		"file": {
+			"empty": "The file {{- file}} is empty!"
+		},
+		"noFiles": "No files to parse found!",
+		"noPath": "The path to the thesaurus is empty!",
+		"noPaths": "No file paths have been included in the parameters.",
+		"notFound": "The thesaurus is not found at the provided path ({{- path}})."
+	},
+	"modal": {
+		"errors": "Errors",
+		"skips": "Skipped",
+		"success": "Success",
+		"title": "MyThesaurus - Results"
+	},
+	"notice": {
+		"done": "Done !",
+		"loading": "Loading...",
+		"start": "Start treatment..."
+	},
+	"settings": {
+		"columns": {
+			"synonyms": {
+				"desc": "This value is the name of the column of words to be searched in the file (contents and title).",
+				"title": "Synonym"
+			},
+			"term": {
+				"desc": "This value is the name of the tag column to be added.",
+				"title": "Term"
+			},
+			"title": "Column title"
+		},
+		"exclude": {
+			"clean": {
+				"desc": "Automatically deletes existing tags if a term is excluded.",
+				"title": "Auto-clean"
+			},
+			"desc": "Allow to exclude term using a property key.",
+			"key": "Frontmatter key",
+			"title": "Excluding terms"
+		},
+		"includedPaths": {
+			"desc": "Includes files from its paths when using the global command.",
+			"regex": "Regex are supported.",
+			"separate": "Separate paths with coma, semicolon, spaces or newlines.",
+			"title": "Included paths"
+		},
+		"other": "Other",
+		"removeAccents": {
+			"by": "like",
+			"cafe": "cafe",
+			"café": "café",
+			"desc": "Ignores accents during recognition: helps identify",
+			"title": "Remove accents",
+			"viceversa": "(and vice versa)"
+		},
+		"separator": {
+			"desc": "CSV column separator.",
+			"md": "Markdown table",
+			"tab": "Tabulation",
+			"title": "Separator"
+		},
+		"thesaurusPath": {
+			"desc": "Path to your CSV thesaurus (in your vault).",
+			"error": "The provided file is not valide.",
+			"placeholder": "mon_thesaurus.csv",
+			"success": "The provided file is correct!",
+			"title": "Thesaurus",
+			"verify": "Verify validity of the file"
+		}
+	},
+	"success": {
+		"none": "No tag to add!",
+		"title": "The tags has been added:"
+	}
 }
