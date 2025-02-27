@@ -40,7 +40,6 @@ export default class MyThesaurus extends Plugin {
 		const keyToFind = this.settings.excludeTermKey;
 		if (keyToFind.trim().length === 0) return [...tags];
 		if (frontmatter?.[keyToFind]) {
-			console.log(frontmatter[keyToFind]);
 			const excludeList = getKeysAsArray(frontmatter[keyToFind]);
 			for (const tag of excludeList) tags.delete(tag);
 		}
@@ -161,12 +160,10 @@ export default class MyThesaurus extends Plugin {
 
 	scanAllFiles(): TFile[] {
 		const allMarkdownFiles = this.app.vault.getMarkdownFiles();
-		console.log(allMarkdownFiles);
 		const files = [];
 		for (const filter of this.settings.includedPaths) {
 			try {
 				const regex = new RegExp(filter, "g");
-				console.log(regex);
 				files.push(...allMarkdownFiles.filter((file) => file.path.match(regex)));
 			} catch (error) {
 				console.error(error);
